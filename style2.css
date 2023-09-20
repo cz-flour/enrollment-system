@@ -1,0 +1,75 @@
+nav{
+  background-color:steelblue;
+    height: 90px;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    top: 0;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+body {
+      font-family: "Helvetica Neue",sans-serif;
+      font-weight: lighter;
+      background-image: linear-gradient(to bottom,rgba(252, 54, 193, 0.329), rgba(52, 125, 209, 0.842)), url("bg.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+}
+
+
+
+.nav-title{
+      color:white;
+      font-family:Georgia, 'Times New Roman', Times, serif;
+      font-weight: 300;
+      font-size: 25px;
+      align-items: center;
+}
+.navbar-brand{
+    justify-content: center;
+}
+
+.content{
+    color: rgb(0, 0, 0);
+    font-family: Arial, sans-serif;
+    background-color: rgb(243, 243, 243);
+    padding-top: 30px;
+    padding-bottom: 50px;
+    border-radius: 3%;
+    width: 80%;
+    opacity: 1;
+    margin-top: 150px;
+    justify-content: center;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@media screen and (max-width: 786px) {
+
+      .nav {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      
+      .nav-title {
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+          }
+    
+          ul {
+            flex-direction: column;
+          }
+    
+          li {
+            margin-right: 0;
+            margin-bottom: 10px;
+          }
+
+
+}
