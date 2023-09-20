@@ -19,7 +19,7 @@ function sendemail_verify($email,  $name, $verify_token){
 
     $mail->Host = "smtp.gmail.com";
     $mail->Username = "jackvincentsanchez.pobre@bicol-u.edu.ph";
-    $mail->Password = "220619220619";
+    $mail->Password = "123456";
 
     $mail->SMTPSecure = "tls";
 
