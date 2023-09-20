@@ -1,0 +1,83 @@
+
+.toggle__container {
+    display: flex; 
+    justify-content: flex-end;
+    width: 100%; 
+    padding: 5px 10px;
+}
+ 
+.sidebar {
+    width: 250px;
+    background-color: #2c2b2b;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    left: 0;
+    top: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.icons {
+    transition: all 0.4s ease ;
+    font-size: 20px;
+}
+
+.links {
+    display: flex; 
+    width: 100%;  
+}
+
+.burger__toggle{
+    transform: rotateY(180deg);
+    transition: all 0.5s ease-in-out;
+}
+
+
+
+.links:hover .icons{
+    scale: 1.4;
+    transition: all 0.4s ease ;
+}
+
+.links__toggle {
+    text-align: center;
+}
+
+.link__name {
+    margin-left: 20px;
+}
+
+.toggle__btn {
+    font-size: 40px; 
+    background: none;
+    border: none; 
+    padding: 5px;
+    border-radius: 100%;
+    text-align: start; 
+    transition: all 0.5s ease-in-out;
+}
+
+.toggle__btn:hover .chevron {  
+    transform: translateX(-2px);
+    transition: all 0.3s ease;
+}
+
+.toggle__btn:hover{
+    background-color: #FFFFFF30;   
+    cursor: pointer;
+    transition: background 0.3s ease ;
+}
+ 
+.hide {
+    display: none;
+}
+
+.content__toggle {
+    transition: margin-left 0.5s ease 0.3s;
+    margin-left: 70px;
+}
+
+.sidebar__toggle{
+    width: 70px;
+    transition: all 0.5s ease-in-out; 
+}

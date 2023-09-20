@@ -1,0 +1,59 @@
+.sidebar {
+  width: 250px;
+  background-color: #2c2b2b;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+/* Sidebar links */
+.sidebar a {
+  display: block;
+  color: rgb(253, 253, 253);
+  padding: 16px;
+  text-decoration: none;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* Active/current link */
+.sidebar a.active {
+  background-color: #817f85;
+  color: white;
+}
+
+/* Links on mouse-over */
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+  .btn {
+    border-radius: 10px;
+    font-size: 10px;
+    background-color: steelblue;
+    border: 2px solid #dcdfdc;
+    color: antiquewhite;
+    cursor: pointer;
+    font-size: 15px;
+    transition-duration: 0.2s;
+    padding: 10px 10px;
+  }
+
+/* On screens that are less than 700px wide, make the sidebar into a topbar */
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
