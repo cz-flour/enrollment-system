@@ -78,6 +78,17 @@
 
 
 
+  <div class="message">
+        <?php
+     if (isset($_GET['msg'])) {
+      $msg = $_GET['msg'];
+      echo '<div class="alert alert-success">' . $msg . '</div>';
+  }else{
+    // $msg="Error: " . $sql . "<br>" . mysqli_error($conn);
+  }
+        ?>
+    </div>
+
     <?php
 if (isset($_GET['msg'])) {
     $msg = $_GET['msg'];

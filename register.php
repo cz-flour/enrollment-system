@@ -1,4 +1,10 @@
+<?php
+      session_start();
+?>
+
 <!DOCTYPE html lang=en>
+
+
 <html>
     <head>
         <meta charset="UTF-8">
@@ -6,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="style2.css">
-    <title>Home</title>
+    <title>Register</title>
     <link rel = "icon" href ="logo.png">
     
     <header>
@@ -14,6 +20,7 @@
       <div class="container-fluid">
         <img src="logo.png" alt="Logo"class="navbar-brand" height="70" width="70">
         <div class="nav-title">Our Lady of the Roses Montessori Learning Center</div>
+        
         </div>
         </nav>
         </header>
@@ -22,13 +29,25 @@
 </head>
 
     <body>
+    <div class="alert">
+      <?php
+      if(isset($_SESSION['status'])){
+          echo "<h4>".$_SESSION['status']."<h/4>";
+          unset($_SESSION['status']);
+      }
+
+?>
+    </div>
         <div class="container-fluid content" >
           <h3> Create an Account</h3>
             <form action="reg_process.php" method="post">
-            <?php if(isset($_GET['msg'])){ ?>
+            <!-- <?php if(isset($_GET['msg'])){ ?> -->
  <div class="alert-warning alert"><?php echo $_GET['msg'];?></div>
      <?php }?>
-              
+     <!-- <div class="form-group col-6">
+                  <label for="name">Name:</label>
+                  <input type="name" class="form-control" placeholder="Enter name" id="name" name="name" required>
+                </div> -->
                 <div class="form-group col-6">
                   <label for="email">Email address:</label>
                   <input type="email" class="form-control" placeholder="Enter email" id="email" name="email" required>
