@@ -18,7 +18,7 @@ function sendemail_verify($email,  $name, $verify_token){
     $mail->SMTPAuth = true;
 
     $mail->Host = "smtp.gmail.com";
-    $mail->Username = "jackvincentsanchez.pobre@bicol-u.edu.ph";
+    $mail->Username = "xnemesisx.12345@gmail.com";
     $mail->Password = "123456";
 
     $mail->SMTPSecure = "tls";
