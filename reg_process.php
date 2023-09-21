@@ -7,7 +7,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-//Load Composer's autoloader
+
 require 'vendor/autoload.php';
 
 function sendemail_verify($email,  $name, $verify_token){
@@ -18,15 +18,15 @@ function sendemail_verify($email,  $name, $verify_token){
     $mail->SMTPAuth = true;
 
     $mail->Host = "smtp.gmail.com";
-    $mail->Username = "xnemesisx.12345@gmail.com";
-    $mail->Password = "123456";
+    $mail->Username = "olrmshs@gmail.com";
+    $mail->Password = "wxui xnlt bvzb vrls";
 
     $mail->SMTPSecure = "tls";
 
     $mail->Port = 587;
 
 
-    $mail->setFrom("jackvincentsanchez.pobre@bicol-u.edu.ph",$name);
+    $mail->setFrom("olrmshs@gmail.com",$name);
     $mail->addAddress($email);
 
     $mail->isHTML(true);
@@ -44,9 +44,9 @@ function sendemail_verify($email,  $name, $verify_token){
    $mail->Body = $email_template;
    $mail->send();
    echo 'Message has been sent';
-    }catch (Exception $e){
+    }
+    catch (Exception $e){
         echo "Email could not be sent. Mailer Error: {$mail->ErrorInfo}";
-    
     }
 }
 
