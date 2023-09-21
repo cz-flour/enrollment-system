@@ -17,8 +17,8 @@ if(isset($_GET['token'])){
             $update_query = "UPDATE user SET verify_status='1' WHERE verify_token='$clicked_token' LIMIT 1";
             $update_query_run = mysqli_query($conn,$update_query);
             if($update_query_run){
-                echo $msg="<h4>Your account has been verified successfully. Please refresh the page</h4>";
-                // header("location: home.php");
+                echo $msg="<h4>Your account has been verified successfully.</h4>";
+                header("location: verified.php");
                 exit(0);
             }
             

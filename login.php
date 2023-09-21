@@ -8,6 +8,7 @@ use PHPMailer\PHPMailer\Exception;
 // Load Composer's autoloader
 require 'vendor/autoload.php';
 
+if(isset($_POST['email'])){
 $email = mysqli_real_escape_string($conn, $_POST['email']);
 $pwd = mysqli_real_escape_string($conn, $_POST['pwd']);
 
@@ -36,13 +37,12 @@ if ($result && $result->num_rows === 1) {
             header("location: after.php");
         }
     } elseif (!$isVerified) {
-        echo "Your email is not yet verified. Please check your email for verification instructions.";
+        echo "<h4>Your email is not yet verified. Please check your email for verification instructions.</h4>";
     } else {
         echo "Invalid Email or Password";
     }
-} else {
-    header("location: view_admission.php");
+    // header("location:home.php");
+} 
 }
-
 $conn->close();
 ?>

@@ -27,7 +27,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item ">
-              <a class="nav-link flex-center" aria-current="page" href="home2.php">
+              <a class="nav-link flex-center" aria-current="page" href="home.php">
               <i class="fa fa-fw fa-home"></i>
                 Home
               </a>

@@ -43,7 +43,7 @@ function sendemail_verify($email,  $name, $verify_token){
     
    $mail->Body = $email_template;
    $mail->send();
-   echo 'Message has been sent';
+//    echo 'Message has been sent';
     }
     catch (Exception $e){
         echo "Email could not be sent. Mailer Error: {$mail->ErrorInfo}";
@@ -61,7 +61,7 @@ if(isset($_POST['email'])) {
     $name = 'Montessori Learning Center';
     $verify_token = md5(rand());
     sendemail_verify("$email", "$name", "$verify_token");
-    echo "sent or not";
+
     
 
     if ($conn->connect_error) {
@@ -78,15 +78,15 @@ if(isset($_POST['email'])) {
         $sql = "INSERT INTO user (email, pwd, verify_token) VALUES ('$email', '$pwd', '$verify_token')";
 
         if (mysqli_query($conn, $sql)) {
-            sendemail_verify("$email", $name, "$verify_token");
-          $_SESSION['status'] = "Registration Successfull! Please verify your Email Address.";
+   
             echo $msg="<h4>Registration Successfull! Please verify your Email Address.</h4>";
+            header("location: success_page.php");
             
         } else {
             $msg="Error: " . $sql . "<br>" . mysqli_error($conn);
         }
     }
-    header("location:register.php?register&msg=$msg");
+    // header("location: login.php");
 }
 
 
