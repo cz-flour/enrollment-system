@@ -91,7 +91,8 @@
 </div>
 
 <div class="container content">
-    <h3>Create an Account</h3>
+    <h3>Reset Password</h3>
+    <!-- <h5>Enter your valid email</h5> -->
     <form action="reg_process.php" method="post">
         <?php if(isset($_GET['msg'])){ ?>
             <div class="alert-warning alert"><?php echo $_GET['msg'];?></div>
@@ -99,21 +100,12 @@
 
         <div class="form-group">
             <label for="email">Email address:</label>
-            <input type="email" class="form-control" placeholder="Enter email" id="email" name="email" required>
+            <input type="email" class="form-control" placeholder="Enter your valid email" id="email" name="email" required>
         </div>
 
-        <div class="form-group">
-            <label for="pwd">Password:</label>
-            <input type="password" class="form-control" placeholder="Enter password" id="pwd" name="pwd" required>
-        </div>
 
-        <div class="form-group form-check">
-            <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" onclick="myFunction()" onchange="togglePasswordVisibility" id="cb">Show password
-            </label>
-        </div>
 
-        <button type="submit" class="btn btn-primary" id="crtbtn">Create Account</button>
+        <button type="submit" class="btn btn-primary" id="crtbtn">Send Link</button>
 
    
     </form>
