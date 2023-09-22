@@ -1,4 +1,9 @@
 
+<?php
+session_start();
+?>
+
+
 <!DOCTYPE html lang=en>
 <html>
     
@@ -78,7 +83,7 @@
 
 
 
-  <div class="message">
+  <!-- <div class="message">
         <?php
      if (isset($_GET['msg'])) {
       $msg = $_GET['msg'];
@@ -87,14 +92,9 @@
     // $msg="Error: " . $sql . "<br>" . mysqli_error($conn);
   }
         ?>
-    </div>
+    </div> -->
 
-    <?php
-if (isset($_GET['msg'])) {
-    $msg = $_GET['msg'];
-    echo '<div class="alert alert-success">' . $msg . '</div>';
-}
-?>
+
 
     <div class="container">
       <div class="content">
@@ -125,6 +125,7 @@ if (isset($_GET['msg'])) {
                 <h5 class="modal-title text-primary" id="exampleModalLabel">Login</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+
             <div class="modal-body">
                 <form action="login.php" method="post">
                     <div class="form-group">
@@ -136,7 +137,7 @@ if (isset($_GET['msg'])) {
                         <input type="password" placeholder="Enter Password" class="form-control" id="pwd" name="pwd" required>
                     </div>
                     <div class="modal-footer">
-                    <button type="submit" name="submit"class="btn btn-success">Login</button>
+                    <button type="submit"  class="btn btn-success">Login</button>
                     </div>
                     
                 </form>

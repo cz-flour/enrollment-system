@@ -90,14 +90,15 @@
     ?>
 </div>
 
+
+
 <div class="container content">
     <h3>Create an Account</h3>
     <form action="reg_process.php" method="post">
-        <?php if(isset($_GET['msg'])){ ?>
-            <div class="alert-warning alert"><?php echo $_GET['msg'];?></div>
-        <?php } ?>
+ 
 
         <div class="form-group">
+   
             <label for="email">Email address:</label>
             <input type="email" class="form-control" placeholder="Enter email" id="email" name="email" required>
         </div>
@@ -113,7 +114,7 @@
             </label>
         </div>
 
-        <button type="submit" class="btn btn-primary" id="crtbtn">Create Account</button>
+        <button type="submit" name="create_account" class="btn btn-primary" id="crtbtn">Create Account</button>
 
     </form>
 </div>

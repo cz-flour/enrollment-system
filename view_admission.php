@@ -1,6 +1,7 @@
 <?php
-include_once './connection.php';
+include_once 'connection.php';
 session_start();
+
 $user_id = $_SESSION['user_id'];
 
 $sql = "SELECT * FROM student_info WHERE user_id = '$user_id'";
@@ -17,7 +18,7 @@ if ($result) {
       $track = $row['track'];
       $strand = $row['strand'];
   } else {
-      // No data found, set default values to "N/A"
+ 
       $userName = "N/A";
       $lrn = "N/A";
       $name = "N/A";
@@ -185,7 +186,8 @@ body{
             <hr>
             <br>
             <h2>Welcome, <?php echo $userName;?> &#10024;</h2>
-            <button type="button" href="eform.php" class="btn btn-primary" href="eform.php" >Enroll</button>
+            <a href="eform.php" class="btn btn-primary">Enroll</a>
+  
             <br>
             <br>
             <h5>S.Y. 2023-2024</h5>
@@ -209,7 +211,7 @@ body{
                 echo '<td>' . $track.'</td>';
                 echo '<td>' . $strand.'</td>';
                 echo '<td id="approvalStatus"></td>';
-
+                var_dump($_SESSION);
     echo '</tr>';
                 echo '</tr>';
                 

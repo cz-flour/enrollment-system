@@ -12,7 +12,14 @@
     <link rel="stylesheet" type="text/css" href="style2.css">
     <title>Reset Password</title>
     <link rel="icon" href="logo.png">
-
+    <header>
+        <nav class="navbar navbar-expand-lg fixed-top">
+            <div class="container-fluid">
+                <img src="logo.png" alt="Logo" class="navbar-brand" height="70" width="70">
+                <div class="nav-title">Our Lady of the Roses Montessori Learning Center</div>
+            </div>
+        </nav>
+    </header>
     <style>
         body {
             background-color: #f8f8f8;
@@ -75,7 +82,7 @@
 <div class="container content">
     <h3>Reset Password</h3>
     <form action="forgotpassword_process.php" method="post">
-        <input type="hidden" name="password_token "value="<?php if(isset($_GET['token']))  {echo $_GET['token'];} ?>"> 
+       
         <div class="alert">
     <?php
     if (isset($_SESSION['status'])) {
@@ -84,7 +91,7 @@
     }
     ?>
 </div>
-
+<input type="hidden" name="password_token" value="<?php if(isset($_GET['token']))  {echo $_GET['token'];} ?>"> 
         <div class="form-group">
             <label for="email">Email address:</label>
             <input type="email" value="<?php if(isset($_GET['email']))  {echo $_GET['email'];} ?>" class="form-control" placeholder="Enter email" id="email" name="email" required>

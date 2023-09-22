@@ -143,11 +143,12 @@
                             <div class="forgot-password-link">
         <a href="forgot_password.php">Forgot your password?</a>
     </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
+    <div class="modal-footer">
                         <button type="submit"  class="btn btn-success">Login</button>
                     </div>
+                        </form>
+                    </div>
+                  
                 </div>
             </div>
         </div>

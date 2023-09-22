@@ -34,7 +34,7 @@ function sendemail_verify($email,  $name, $verify_token){
 
     $email_template = "
     <h2>You have registered with Our Lady of the Roses Montessori Learning Center</h2>
-    <h5>Verify your email address by clicking the below given link</h5>
+    <h5>Verify your email address to login with the below given link</h5>
     <br></br>
     <a href='http://localhost/enrollment-system/verify_email.php?token=$verify_token'> Click Here </a>
     ";
@@ -50,44 +50,42 @@ function sendemail_verify($email,  $name, $verify_token){
     }
 }
 
-//checks if value of name="email_add" is set
-if(isset($_POST['email'])) {
-
-    //transfers value of name="" from form to variable
-    //$r_username = $_POST['reg_username'];
-
+if (isset($_POST['email'])) {
     $email = $_POST['email'];
     $pwd = $_POST['pwd'];
-    $name = 'Montessori Learning Center';
-    $verify_token = md5(rand());
-    sendemail_verify("$email", "$name", "$verify_token");
-
-    
 
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-    
-    $sql = "SELECT * FROM user WHERE email = '$email'";
-    $result = mysqli_query($conn, $sql);
 
-    if (mysqli_num_rows($result) > 0) {
-        $msg="User already exists.";
+    // Check if the email already exists in the database
+    $sql_check = "SELECT * FROM user WHERE email = '$email'";
+    $result_check = mysqli_query($conn, $sql_check);
+
+    if (mysqli_num_rows($result_check) > 0) {
+        $msg = "User already exists.";
+        $_SESSION['status'] = "<h2>Password reset link sent successfully.</h2>"; // Set the success message
+        header("location: register.php");
     } else {
+        // Generate a verification token
+        $verify_token = md5(rand());
 
-        $sql = "INSERT INTO user (email, pwd, verify_token) VALUES ('$email', '$pwd', '$verify_token')";
 
-        if (mysqli_query($conn, $sql)) {
-   
-            echo $msg="<h4>Registration Successfull! Please verify your Email Address.</h4>";
+        $name = 'Montessori Learning Center';
+        // sendemail_verify($email, $name, $verify_token);
+
+        // Insert the new user into the database
+        $sql_insert = "INSERT INTO user (email, pwd, verify_token) VALUES ('$email', '$pwd', '$verify_token')";
+
+        if (mysqli_query($conn, $sql_insert)) {
+             sendemail_verify($email, $name, $verify_token);
+
+            $msg = "<h4>Registration Successful! Please verify your Email Address.</h4>";
             header("location: success_page.php");
-            
         } else {
-            $msg="Error: " . $sql . "<br>" . mysqli_error($conn);
+            $msg = "Error: " . $sql_insert . "<br>" . mysqli_error($conn);
         }
     }
-    // header("location: login.php");
 }
-
 
 ?>

@@ -1,12 +1,7 @@
 <?php
 include_once "connection.php";
 session_start();
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
 
-// Load Composer's autoloader
-require 'vendor/autoload.php';
 
 if(isset($_POST['email'])){
 $email = mysqli_real_escape_string($conn, $_POST['email']);
@@ -26,7 +21,7 @@ if ($result && $result->num_rows === 1) {
     $isPasswordMatch = $row['pwd'] === $pwd;
     $isAdmin = $row['is_admin'] == 1;
     $isVerified = $row['verify_status'] == 1; 
-
+    // var_dump($_SESSION);
     if ($isPasswordMatch && $isVerified) {
         $_SESSION['user_id'] = $row['user_id'];
 
@@ -38,10 +33,12 @@ if ($result && $result->num_rows === 1) {
         }
     } elseif (!$isVerified) {
         echo "<h4>Your email is not yet verified. Please check your email for verification instructions.</h4>";
+        
     } else {
         echo "Invalid Email or Password";
+        header("location: home.php");
     }
-    header("location:home.php");
+    // header("location:home.php");
 } 
 }
 $conn->close();
