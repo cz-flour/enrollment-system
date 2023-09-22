@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="style2.css">
-    <title>Register</title>
+    <title>Forgot password</title>
     <link rel="icon" href="logo.png">
 
     <style>
@@ -64,10 +64,7 @@
             background-color: #0056b3;
         }
 
-        .forgot-password-link {
-            text-align: center;
-            margin-top: 20px;
-        }
+  
     </style>
 
     <header>
@@ -81,22 +78,20 @@
 </head>
 
 <body>
-<div class="alert">
-    <?php
-    if(isset($_SESSION['status'])){
-        echo "<h4>".$_SESSION['status']."</h4>";
-        unset($_SESSION['status']);
-    }
-    ?>
-</div>
+
 
 <div class="container content">
     <h3>Reset Password</h3>
-    <!-- <h5>Enter your valid email</h5> -->
-    <form action="reg_process.php" method="post">
-        <?php if(isset($_GET['msg'])){ ?>
-            <div class="alert-warning alert"><?php echo $_GET['msg'];?></div>
-        <?php } ?>
+    
+    <div class="alert">
+    <?php
+    if (isset($_SESSION['status'])) {
+        echo "<h4>" . $_SESSION['status'] . "</h4>";
+        unset($_SESSION['status']); 
+    }
+    ?>
+</div>
+    <form action="forgotpassword_process.php" method="post">
 
         <div class="form-group">
             <label for="email">Email address:</label>
@@ -110,31 +105,6 @@
    
     </form>
 </div>
-
-<script src="js/bootstrap.js"></script>
-<script>
-    function myFunction() {
-        var x = document.getElementById("pwd");
-        if (x.type === "password") {
-            x.type = "text";
-        } else {
-            x.type = "password";
-        }
-    }
-</script>
-
-<script>
-    function togglePasswordVisibility() {
-        const passwordInput = document.getElementById("pwd");
-        const checkbox = document.getElementById("cb");
-
-        if (checkbox.checked) {
-            passwordInput.type = "text";
-        } else {
-            passwordInput.type = "password";
-        }
-    }
-</script>
 
 </body>
 </html>

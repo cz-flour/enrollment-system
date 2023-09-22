@@ -115,9 +115,6 @@
 
         <button type="submit" class="btn btn-primary" id="crtbtn">Create Account</button>
 
-        <div class="forgot-password-link">
-            <a href="forgot_password.php">Forgot your password?</a>
-        </div>
     </form>
 </div>
 

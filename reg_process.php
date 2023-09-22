@@ -34,7 +34,7 @@ function sendemail_verify($email,  $name, $verify_token){
 
     $email_template = "
     <h2>You have registered with Our Lady of the Roses Montessori Learning Center</h2>
-    <h5>Verify your email address to login with the below given link</h5>
+    <h5>Verify your email address by clicking the below given link</h5>
     <br></br>
     <a href='http://localhost/enrollment-system/verify_email.php?token=$verify_token'> Click Here </a>
     ";

@@ -27,17 +27,6 @@
 
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
-            <li class="nav-item ">
-              <a class="nav-link flex-center" aria-current="page" href="home.php">
-              <i class="fa fa-fw fa-home"></i>
-                Home
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="aboutus.php">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link cursor-pointer" id="loginbtn" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
             </li> 
           </ul>
         </div>
@@ -72,6 +61,13 @@
       margin-top: 20px;
       padding: 20px 30px;
 }
+.center-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* This ensures the content is centered in the viewport height */
+}
   </style>
           
   <body >
@@ -100,17 +96,18 @@ if (isset($_GET['msg'])) {
       <div class="content">
         <!-- <img src="logo1.png" alt="logo" class="logo"> -->
         <div class="container-fluid">
-  <h1>Our Lady of the <br>
-    Roses Montessori Learning Center</h1>
-    <div id="texxx">
+        <div class="center-text">
+  <h1>Email verified! <br>You can now login</h1>
+</div>
+    <!-- <div id="texxx">
       <h6>Senior High School</h6>
-  <p>Online Enrollment System</p>
-  <div class="button">
-        <a href="register.php"><button class="register-button" href="register.php">Register Now</button> </a>
+  <p>Online Enrollment System</p> -->
+  <!-- <div class="button">
+        <a href="register.php"><button class="register-button" href="register.php">Register Now</button> </a> -->
         <!-- Button trigger modal -->  
-        <button type="button " class="btn register-button " data-bs-toggle="modal" data-bs-target="#loginModal">
+        <!-- <button type="button " class="btn register-button " data-bs-toggle="modal" data-bs-target="#loginModal">
           Log in
-        </button>
+        </button> -->
       </div>
 </div>
 </div>

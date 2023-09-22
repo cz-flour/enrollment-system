@@ -34,14 +34,14 @@ if ($result && $result->num_rows === 1) {
             header("location: admin/index.php");
         } else {
             echo "<script>alert('You are logged in');</script>";
-            header("location: after.php");
+            header("location: view_admission.php");
         }
     } elseif (!$isVerified) {
         echo "<h4>Your email is not yet verified. Please check your email for verification instructions.</h4>";
     } else {
         echo "Invalid Email or Password";
     }
-    // header("location:home.php");
+    header("location:home.php");
 } 
 }
 $conn->close();

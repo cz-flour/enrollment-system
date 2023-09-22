@@ -7,20 +7,25 @@ $sql = "SELECT * FROM student_info WHERE user_id = '$user_id'";
 $result = $conn->query($sql);
 
 if ($result) {
-    // Assuming there's only one row returned for the user
-    $row = mysqli_fetch_assoc($result);
-    $userName = $row['fname'];
-    $lrn = $row['lrn'];
-    $name = $row['fname'] . ' ' . $row['mname'] . ' ' . $row['lname'];
-    $grlevel = $row['grlevel'];
-    $track = $row['track'];
-    $strand = $row['strand'];
+  $result = $conn->query($sql);
 
-} else {
-    // Handle the case where the query fails or no data is found
-    $userName = "Guest"; // Display a default name
+  if ($result && $row = mysqli_fetch_assoc($result)) {
+      $userName = $row['fname'];
+      $lrn = $row['lrn'];
+      $name = $row['fname'] . ' ' . $row['mname'] . ' ' . $row['lname'];
+      $grlevel = $row['grlevel'];
+      $track = $row['track'];
+      $strand = $row['strand'];
+  } else {
+      // No data found, set default values to "N/A"
+      $userName = "N/A";
+      $lrn = "N/A";
+      $name = "N/A";
+      $grlevel = "N/A";
+      $track = "N/A";
+      $strand = "N/A";
+  }
 }
-
 ?>
 
 
@@ -180,9 +185,11 @@ body{
             <hr>
             <br>
             <h2>Welcome, <?php echo $userName;?> &#10024;</h2>
+            <button type="button" href="eform.php" class="btn btn-primary" href="eform.php" >Enroll</button>
             <br>
             <br>
             <h5>S.Y. 2023-2024</h5>
+            
             <table>
                 <?php
 

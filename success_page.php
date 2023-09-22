@@ -136,7 +136,7 @@ if (isset($_GET['msg'])) {
                         <input type="password" placeholder="Enter Password" class="form-control" id="pwd" name="pwd" required>
                     </div>
                     <div class="modal-footer">
-                    <button type="submit" class="btn btn-success">Login</button>
+                    <button type="submit" name="submit"class="btn btn-success">Login</button>
                     </div>
                     
                 </form>

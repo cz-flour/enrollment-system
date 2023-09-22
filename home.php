@@ -75,7 +75,7 @@
                         <a class="nav-link" href="aboutus.php">About Us</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link cursor-pointer ml-auto" id="loginbtn" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+                    <a class="nav-link cursor-pointer ml-auto"  id="loginbtn" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
 
                     </li>
                 </ul>
@@ -146,7 +146,7 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-success">Login</button>
+                        <button type="submit"  class="btn btn-success">Login</button>
                     </div>
                 </div>
             </div>
