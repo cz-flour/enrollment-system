@@ -49,7 +49,7 @@ if (isset($_SESSION['user_id'])) {
     //$stmt->close();
     $conn->close();
 
-    header("location:after.php?register&msg=$msg");
+    header("location:view_admission.php?register&msg=$msg");
     exit;
 }
 ?>

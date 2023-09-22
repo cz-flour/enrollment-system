@@ -7,17 +7,19 @@ $user_id = $_SESSION['user_id'];
 $sql = "SELECT * FROM student_info WHERE user_id = '$user_id'";
 $result = $conn->query($sql);
 
-if ($result) {
-  $result = $conn->query($sql);
+$enrollButtonVisible = true;
 
-  if ($result && $row = mysqli_fetch_assoc($result)) {
-      $userName = $row['fname'];
-      $lrn = $row['lrn'];
-      $name = $row['fname'] . ' ' . $row['mname'] . ' ' . $row['lname'];
-      $grlevel = $row['grlevel'];
-      $track = $row['track'];
-      $strand = $row['strand'];
-  } else {
+if ($result && $row = mysqli_fetch_assoc($result)) {
+    $enrollButtonVisible = false;
+    $userName = $row['fname'];
+    $lrn = $row['lrn'];
+    $name = $row['fname'] . ' ' . $row['mname'] . ' ' . $row['lname'];
+    $grlevel = $row['grlevel'];
+    $track = $row['track'];
+    $strand = $row['strand'];
+}
+
+ else {
  
       $userName = "N/A";
       $lrn = "N/A";
@@ -26,7 +28,8 @@ if ($result) {
       $track = "N/A";
       $strand = "N/A";
   }
-}
+
+
 ?>
 
 
@@ -186,7 +189,11 @@ body{
             <hr>
             <br>
             <h2>Welcome, <?php echo $userName;?> &#10024;</h2>
+            <?php if ($enrollButtonVisible): ?>
             <a href="eform.php" class="btn btn-primary">Enroll</a>
+  
+        <?php endif; ?>
+        <a href="eformdownload.php" class="btn btn-success" download>Download</a>
   
             <br>
             <br>
@@ -211,7 +218,7 @@ body{
                 echo '<td>' . $track.'</td>';
                 echo '<td>' . $strand.'</td>';
                 echo '<td id="approvalStatus"></td>';
-                var_dump($_SESSION);
+                // var_dump($_SESSION);
     echo '</tr>';
                 echo '</tr>';
                 
