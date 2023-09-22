@@ -1,3 +1,13 @@
+<?php
+$conn = mysqli_connect("localhost", "root", "", "enrollment");
+if ($conn->connect_error) {
+die("Connection failed: " . $conn->connect_error);
+}
+
+
+?>
+
+
 <!DOCTYPE html lang=en>
 <html>
 
@@ -12,13 +22,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type="text/javascript" src="./assets/js/ajaxWork.js"></script>    
     <script type="text/javascript" src="./assets/js/script.js"></script>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" ></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" ></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.6/js/jquery.dataTables.js"></script>
+
     <script src="../plugins/popper.min.js"></script>
+    
+
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.6/css/jquery.dataTables.css">
+<link rel="stylesheet" href="../css/bootstrap.css">
+<link rel="stylesheet" href="../css/styles.css">
 
 
 
@@ -63,747 +79,156 @@ h3,h6{
     cursor: not-allowed;
   }
 </style>
- 
-<body>
-    <div   class="container allContent-section py-4">
+
+<body class="width-fix ">
+    <!-- SIDEBAR -->
+    <?php include "./sidebar.php";  ?>
+    <div id="content"  class="container-fluid py-4 main-container">
         <div class="row">
-            <div class="col-sm-3">
+            
+            <div class="col-md-12">
 
-                <!-- SIDEBAR -->
-                <?php include "./sidebar.php";  ?>
-                <!-- MAIN CONTENT -->
-                <div id="content" class="container">
-                <div class="container">
-        <div class="row">
-        <div class="colapse" id="collapseContent">
-                <div class="card card-body">
-
-        </div>
+            <!-- FILTER BUTTONS FOR DISPLAY -->
+                <div class="filter-btn-container container-fluid mb-3">
+                    <div class="row">
+                            <div class="mb-2 col-md-2">
+                                <p class="mb-0">Select Year Level</p>
+                                <div class="d-flex align-items-center">
+                                    <button class="btn btn-outline-primary me-3 filter-btn filter-grade-btn mb-2" data-filter="Grade 11">Grade 11</button>
+                                    <button class="btn btn-outline-primary filter-btn filter-grade-btn mb-2" data-filter="Grade 12">Grade 12</button>
+                                </div>
+                            </div>
+                            <div class="mb-2 col-md-10">
+                                <p class="mb-0">Select Strand</p>
+                                <div class="d-flex align-items-center flex-wrap">
+                                        <button class="btn btn-outline-primary me-3 filter-btn filter-strand-btn mb-2" data-filter="General Academic Strand (GAS)">General Academic Strand (GAS)</button>
+                                        <button class="btn btn-outline-primary me-3 filter-btn filter-strand-btn mb-2" data-filter="Humanitites and Social Sciences (HUMMS)">Humanitites and Social Sciences (HUMMS)</button>
+                                        <button class="btn btn-outline-primary me-3 filter-btn filter-strand-btn mb-2" data-filter="Automotive Servicing">Automotive Servicing</button>
+                                        <button class="btn btn-outline-primary me-3 filter-btn filter-strand-btn mb-2" data-filter="Electrical Installation and Maintenance">Electrical Installation and Maintenance</button>
+                                        <button class="btn btn-outline-primary filter-btn filter-strand-btn mb-2" data-filter="Computer System Servicing">Computer System Servicing</button>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <p class="mb-0">Admin Options</p>
+                            <div>
+                                <button class="btn btn-outline-success manage me-3">Manage Student</button>
+                                <button class="btn btn-outline-success view">View Class List</button>
+                            </div>
+                        </div>
+                        <div class="col-md-9 hidden class-filter-btns">
+                            <p class="mb-0">Select Sections</p>
+                            <div>
+                                <button class="btn btn-outline-success class me-3" data-filter="A">Section A</button>
+                                <button class="btn btn-outline-success class me-3" data-filter="B">Section B</button>
+                                <button class="btn btn-outline-success class me-3" data-filter="C">Section C</button>
+                                <button class="btn btn-outline-success class me-3" data-filter="D">Section D</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            <div class="col-12 p-3 mb-2 bg-transparent" style="color: light;">
-
-               <h3>Grade 11</h3>
-               <h6>General Academic Strand (GAS)</h6>
-
-               <table id="myTable">
-                    <tr>
-                    <th>LRN</th>
-                    <th>Last Name</th>
-                    <th>First Name</th>
-                    <th>Middle Name</th>
-                    <th>Extension</th>
-                    <th>Birthday</th>
-                    <th>Age</th>
-                    <th>Height</th>
-                    <th>Weight</th>
-                    <th>Civil Status</th>
-                    <th>Nationality</th>
-                    <th>Place of Birth</th>
-                    <th>Sex</th>
-                    <th>Religion</th>
-                    <th>Contact Number</th>
-                    <th>Address</th>
-                    <th>Grade Level</th>
-                    <th>Track</th>
-                    <th>Strand</th>
-                    <th>PSA</th>
-                    <th>Card</th>
-                    <th>Picture</th>
-                    <th>Completion Form</th>
-                    <th>Contact Person</th>
-                    <th>Address</th>
-                    <th>Relation</th>
-                    <th>Tel. No</th>
-                    <th>Elem School Name</th>
-                    <th>School Address</th>
-                    <th>Year of Completion (Elem)</th>
-                    <th>JHS School Name</th>
-                    <th>School Address</th>
-                    <th>Year of Completion (jhs)</th>
-                    <th>Date Enrolled</th>
-                    <th>Status</th>
-
-                    </tr>
-<?php
-$conn = mysqli_connect("localhost", "root", "", "enrollment");
-// Check connection
-
-
-
-if ($conn->connect_error) {
-die("Connection failed: " . $conn->connect_error);
-}
-$sql = "SELECT * FROM student_info WHERE grlevel='Grade 11' AND strand='General Academic Strand (GAS)'";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-// output data of each row
-while($row = $result->fetch_assoc()) {
-    $address = "Purok" .$row["purok"] . ", " . $row["brgy"] . ", " . $row["municipality"].",".$row["province"];
-    $student_id = $row["student_id"]; // Assuming this is the student's unique identifier in the database
-$statusId = "statusButton_" . $student_id;
-
-echo "<tr><td>" . $row["lrn"]. "</td><td>" . $row["lname"] . "</td><td>" . $row["fname"]. "</td><td>" . $row["mname"]. "</td><td>" . $row["extension"]. "</td><td>" . $row["birthdate"]. "</td><td>" . $row["age"]. "</td><td>" . $row["height"]. "</td><td>" . $row["weight"]. "</td><td>" . $row["cstatus"]. "</td><td>" . $row["nationality"]. "</td><td>" . $row["place_birth"]. "</td><td>" . $row["sex"]. "</td><td>" .$row["religion"]. "</td><td>" .$row["contact"]. "</td><td>" .$address. "</td><td>" .$row["grlevel"]. "</td><td>" .$row["track"]. "</td><td>" .$row["strand"]. "</td><td>" .$row["psa"]. "</td><td>" .$row["formcard"]. "</td><td>" .$row["pics"]. "</td><td>" .$row["complform"]. "</td><td>" .$row["fullname"]. "</td><td>" . $row["caddress"]. "</td><td>" . $row["rel"]. "</td><td>" . $row["cpnum"]. "</td><td>" . $row["schname"]. "</td><td>" . $row["schaddress"]. "</td><td>" . $row["yrcomp"]. "</td><td>" . $row["schnamej"]. "</td><td>" . $row["schaddressj"]. "</td><td>" . $row["yrcompj"]. "</td><td>".$row["date"]. "</td><td> <button id='" . $statusId . "' class='status-button'>Pending</button></td>";	
-
-}
-
-
-echo "</table>";
-}
-else { echo "0 results"; }
-
-?>
-</table>
+            
+            <!-- MAIN CONTENT -->
+            <section class="container-fluid" id="mainParent">
+                <div class="row mb-2">
+                    
+                    <div class="col-md-12 text-center">
+                        <h3 class="current-filter" >Grade 11 - General Academic Strand (GAS)</h3>
+                    </div>
                 </div>
-
-
-<br>
-<br>
-
-
- <div class="col-12 p-3 mb-2 bg-transparent" style="color: light;">
-
-<h6>Humanitites and Social Sciences (HUMMS)</h6>
-
-<table id="myTable">
-     <tr>
-     <th>LRN</th>
-     <th>Last Name</th>
-     <th>First Name</th>
-     <th>Middle Name</th>
-     <th>Extension</th>
-     <th>Birthday</th>
-     <th>Age</th>
-     <th>Height</th>
-     <th>Weight</th>
-     <th>Civil Status</th>
-     <th>Nationality</th>
-     <th>Place of Birth</th>
-     <th>Sex</th>
-     <th>Religion</th>
-     <th>Contact Number</th>
-     <th>Address</th>
-     <th>Grade Level</th>
-     <th>Track</th>
-     <th>Strand</th>
-     <th>PSA</th>
-     <th>Card</th>
-     <th>Picture</th>
-     <th>Completion Form</th>
-     <th>Contact Person</th>
-     <th>Address</th>
-     <th>Relation</th>
-     <th>Tel. No</th>
-     <th>Elem School Name</th>
-     <th>School Address</th>
-     <th>Year of Completion (Elem)</th>
-     <th>JHS School Name</th>
-     <th>School Address</th>
-     <th>Year of Completion (jhs)</th>
-     <th>Date Enrolled</th>
-     <th>Status</th>
-
-     </tr>
-<?php
-$conn = mysqli_connect("localhost", "root", "", "enrollment");
-// Check connection
-
-
-
-          if ($conn->connect_error) {
-          die("Connection failed: " . $conn->connect_error);
-          }
-          $sql = "SELECT * FROM student_info WHERE grlevel='Grade 11' AND strand='Humanities and Social Sciences (HUMMS)'";
-          $result = $conn->query($sql);
-          if ($result->num_rows > 0) {
-          // output data of each row
-          while($row = $result->fetch_assoc()) {
-          $address = "Purok" .$row["purok"] . ", " . $row["brgy"] . ", " . $row["municipality"].",".$row["province"];
-          $student_id = $row["student_id"]; // Assuming this is the student's unique identifier in the database
-          $statusId = "statusButton_" . $student_id;
-
-          echo "<tr><td>" . $row["lrn"]. "</td><td>" . $row["lname"] . "</td><td>" . $row["fname"]. "</td><td>" . $row["mname"]. "</td><td>" . $row["extension"]. "</td><td>" . $row["birthdate"]. "</td><td>" . $row["age"]. "</td><td>" . $row["height"]. "</td><td>" . $row["weight"]. "</td><td>" . $row["cstatus"]. "</td><td>" . $row["nationality"]. "</td><td>" . $row["place_birth"]. "</td><td>" . $row["sex"]. "</td><td>" .$row["religion"]. "</td><td>" .$row["contact"]. "</td><td>" .$address. "</td><td>" .$row["grlevel"]. "</td><td>" .$row["track"]. "</td><td>" .$row["strand"]. "</td><td>" .$row["psa"]. "</td><td>" .$row["formcard"]. "</td><td>" .$row["pics"]. "</td><td>" .$row["complform"]. "</td><td>" .$row["fullname"]. "</td><td>" . $row["caddress"]. "</td><td>" . $row["rel"]. "</td><td>" . $row["cpnum"]. "</td><td>" . $row["schname"]. "</td><td>" . $row["schaddress"]. "</td><td>" . $row["yrcomp"]. "</td><td>" . $row["schnamej"]. "</td><td>" . $row["schaddressj"]. "</td><td>" . $row["yrcompj"]. "</td><td>".$row["date"]. "</td><td> <button id='" . $statusId . "' class='status-button'>Pending</button></td>";	
-
-          }
-
-
-          echo "</table>";
-          }
-          else { echo "0 results"; }
-
-          ?>
-</table>
- </div>
-
-<br>
-<br>
-
-
- <div class="col-12 p-3 mb-2 bg-transparent" style="color: light;">
-
-<h6>Automotive Servicing</h6>
-
-<table id="myTable">
-    <tr>
-    <th>LRN</th>
-    <th>Last Name</th>
-    <th>First Name</th>
-    <th>Middle Name</th>
-    <th>Extension</th>
-    <th>Birthday</th>
-    <th>Age</th>
-    <th>Height</th>
-    <th>Weight</th>
-    <th>Civil Status</th>
-    <th>Nationality</th>
-    <th>Place of Birth</th>
-    <th>Sex</th>
-    <th>Religion</th>
-    <th>Contact Number</th>
-    <th>Address</th>
-    <th>Grade Level</th>
-    <th>Track</th>
-    <th>Strand</th>
-    <th>PSA</th>
-    <th>Card</th>
-    <th>Picture</th>
-    <th>Completion Form</th>
-    <th>Contact Person</th>
-    <th>Address</th>
-    <th>Relation</th>
-    <th>Tel. No</th>
-    <th>Elem School Name</th>
-    <th>School Address</th>
-    <th>Year of Completion (Elem)</th>
-    <th>JHS School Name</th>
-    <th>School Address</th>
-    <th>Year of Completion (jhs)</th>
-    <th>Date Enrolled</th>
-    <th>Status</th>
-
-    </tr>
-<?php
-$conn = mysqli_connect("localhost", "root", "", "enrollment");
-// Check connection
-
-
-
-        if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-        }
-        $sql = "SELECT * FROM student_info WHERE grlevel='Grade 11' AND strand='Automotive Servicing'";
-        $result = $conn->query($sql);
-        if ($result->num_rows > 0) {
-        // output data of each row
-        while($row = $result->fetch_assoc()) {
-        $address = "Purok" .$row["purok"] . ", " . $row["brgy"] . ", " . $row["municipality"].",".$row["province"];
-        $student_id = $row["student_id"]; // Assuming this is the student's unique identifier in the database
-        $statusId = "statusButton_" . $student_id;
-
-        echo "<tr><td>" . $row["lrn"]. "</td><td>" . $row["lname"] . "</td><td>" . $row["fname"]. "</td><td>" . $row["mname"]. "</td><td>" . $row["extension"]. "</td><td>" . $row["birthdate"]. "</td><td>" . $row["age"]. "</td><td>" . $row["height"]. "</td><td>" . $row["weight"]. "</td><td>" . $row["cstatus"]. "</td><td>" . $row["nationality"]. "</td><td>" . $row["place_birth"]. "</td><td>" . $row["sex"]. "</td><td>" .$row["religion"]. "</td><td>" .$row["contact"]. "</td><td>" .$address. "</td><td>" .$row["grlevel"]. "</td><td>" .$row["track"]. "</td><td>" .$row["strand"]. "</td><td>" .$row["psa"]. "</td><td>" .$row["formcard"]. "</td><td>" .$row["pics"]. "</td><td>" .$row["complform"]. "</td><td>" .$row["fullname"]. "</td><td>" . $row["caddress"]. "</td><td>" . $row["rel"]. "</td><td>" . $row["cpnum"]. "</td><td>" . $row["schname"]. "</td><td>" . $row["schaddress"]. "</td><td>" . $row["yrcomp"]. "</td><td>" . $row["schnamej"]. "</td><td>" . $row["schaddressj"]. "</td><td>" . $row["yrcompj"]. "</td><td>".$row["date"]. "</td><td> <button id='" . $statusId . "' class='status-button'>Pending</button></td>";	
-
-        }
-
-
-        echo "</table>";
-        }
-        else { echo "0 results"; }
-
-        ?>
-        </table>
-        </div>
-
-
-<br>
-<br>
-
-
-
-              <div class="col-12 p-3 mb-2 bg-transparent" style="color: light;">
-
-              <h6>Electrical Installation and Maintenance</h6>
-
-              <table id="myTable">
-                  <tr>
-                  <th>LRN</th>
-                  <th>Last Name</th>
-                  <th>First Name</th>
-                  <th>Middle Name</th>
-                  <th>Extension</th>
-                  <th>Birthday</th>
-                  <th>Age</th>
-                  <th>Height</th>
-                  <th>Weight</th>
-                  <th>Civil Status</th>
-                  <th>Nationality</th>
-                  <th>Place of Birth</th>
-                  <th>Sex</th>
-                  <th>Religion</th>
-                  <th>Contact Number</th>
-                  <th>Address</th>
-                  <th>Grade Level</th>
-                  <th>Track</th>
-                  <th>Strand</th>
-                  <th>PSA</th>
-                  <th>Card</th>
-                  <th>Picture</th>
-                  <th>Completion Form</th>
-                  <th>Contact Person</th>
-                  <th>Address</th>
-                  <th>Relation</th>
-                  <th>Tel. No</th>
-                  <th>Elem School Name</th>
-                  <th>School Address</th>
-                  <th>Year of Completion (Elem)</th>
-                  <th>JHS School Name</th>
-                  <th>School Address</th>
-                  <th>Year of Completion (jhs)</th>
-                  <th>Date Enrolled</th>
-                  <th>Status</th>
-
-                  </tr>
-              <?php
-              $conn = mysqli_connect("localhost", "root", "", "enrollment");
-              // Check connection
-
-
-
-              if ($conn->connect_error) {
-              die("Connection failed: " . $conn->connect_error);
-              }
-              $sql = "SELECT * FROM student_info WHERE grlevel='Grade 11' AND strand='Electrical Installation and Maintenance'";
-              $result = $conn->query($sql);
-              if ($result->num_rows > 0) {
-              // output data of each row
-              while($row = $result->fetch_assoc()) {
-              $address = "Purok" .$row["purok"] . ", " . $row["brgy"] . ", " . $row["municipality"].",".$row["province"];
-              $student_id = $row["student_id"]; // Assuming this is the student's unique identifier in the database
-              $statusId = "statusButton_" . $student_id;
-
-              echo "<tr><td>" . $row["lrn"]. "</td><td>" . $row["lname"] . "</td><td>" . $row["fname"]. "</td><td>" . $row["mname"]. "</td><td>" . $row["extension"]. "</td><td>" . $row["birthdate"]. "</td><td>" . $row["age"]. "</td><td>" . $row["height"]. "</td><td>" . $row["weight"]. "</td><td>" . $row["cstatus"]. "</td><td>" . $row["nationality"]. "</td><td>" . $row["place_birth"]. "</td><td>" . $row["sex"]. "</td><td>" .$row["religion"]. "</td><td>" .$row["contact"]. "</td><td>" .$address. "</td><td>" .$row["grlevel"]. "</td><td>" .$row["track"]. "</td><td>" .$row["strand"]. "</td><td>" .$row["psa"]. "</td><td>" .$row["formcard"]. "</td><td>" .$row["pics"]. "</td><td>" .$row["complform"]. "</td><td>" .$row["fullname"]. "</td><td>" . $row["caddress"]. "</td><td>" . $row["rel"]. "</td><td>" . $row["cpnum"]. "</td><td>" . $row["schname"]. "</td><td>" . $row["schaddress"]. "</td><td>" . $row["yrcomp"]. "</td><td>" . $row["schnamej"]. "</td><td>" . $row["schaddressj"]. "</td><td>" . $row["yrcompj"]. "</td><td>".$row["date"]. "</td><td> <button id='" . $statusId . "' class='status-button'>Pending</button></td>";	
-
-              }
-
-
-              echo "</table>";
-              }
-              else { echo "0 results"; }
-
-              ?>
-              </table>
-              </div>
-
-
-<br>
-<br>
-
-
-<div class="col-12 p-3 mb-2 bg-transparent" style="color: light;">
-
-<h6>Computer System Servicing</h6>
-
-<table id="myTable">
-    <tr>
-    <th>LRN</th>
-    <th>Last Name</th>
-    <th>First Name</th>
-    <th>Middle Name</th>
-    <th>Extension</th>
-    <th>Birthday</th>
-    <th>Age</th>
-    <th>Height</th>
-    <th>Weight</th>
-    <th>Civil Status</th>
-    <th>Nationality</th>
-    <th>Place of Birth</th>
-    <th>Sex</th>
-    <th>Religion</th>
-    <th>Contact Number</th>
-    <th>Address</th>
-    <th>Grade Level</th>
-    <th>Track</th>
-    <th>Strand</th>
-    <th>PSA</th>
-    <th>Card</th>
-    <th>Picture</th>
-    <th>Completion Form</th>
-    <th>Contact Person</th>
-    <th>Address</th>
-    <th>Relation</th>
-    <th>Tel. No</th>
-    <th>Elem School Name</th>
-    <th>School Address</th>
-    <th>Year of Completion (Elem)</th>
-    <th>JHS School Name</th>
-    <th>School Address</th>
-    <th>Year of Completion (jhs)</th>
-    <th>Date Enrolled</th>
-    <th>Status</th>
-
-    </tr>
-<?php
-$conn = mysqli_connect("localhost", "root", "", "enrollment");
-// Check connection
-
-
-
-if ($conn->connect_error) {
-die("Connection failed: " . $conn->connect_error);
-}
-$sql = "SELECT * FROM student_info WHERE grlevel='Grade 11' AND strand='Computer System Servicing '";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-// output data of each row
-while($row = $result->fetch_assoc()) {
-$address = "Purok" .$row["purok"] . ", " . $row["brgy"] . ", " . $row["municipality"].",".$row["province"];
-$student_id = $row["student_id"]; // Assuming this is the student's unique identifier in the database
-$statusId = "statusButton_" . $student_id;
-
-echo "<tr><td>" . $row["lrn"]. "</td><td>" . $row["lname"] . "</td><td>" . $row["fname"]. "</td><td>" . $row["mname"]. "</td><td>" . $row["extension"]. "</td><td>" . $row["birthdate"]. "</td><td>" . $row["age"]. "</td><td>" . $row["height"]. "</td><td>" . $row["weight"]. "</td><td>" . $row["cstatus"]. "</td><td>" . $row["nationality"]. "</td><td>" . $row["place_birth"]. "</td><td>" . $row["sex"]. "</td><td>" .$row["religion"]. "</td><td>" .$row["contact"]. "</td><td>" .$address. "</td><td>" .$row["grlevel"]. "</td><td>" .$row["track"]. "</td><td>" .$row["strand"]. "</td><td>" .$row["psa"]. "</td><td>" .$row["formcard"]. "</td><td>" .$row["pics"]. "</td><td>" .$row["complform"]. "</td><td>" .$row["fullname"]. "</td><td>" . $row["caddress"]. "</td><td>" . $row["rel"]. "</td><td>" . $row["cpnum"]. "</td><td>" . $row["schname"]. "</td><td>" . $row["schaddress"]. "</td><td>" . $row["yrcomp"]. "</td><td>" . $row["schnamej"]. "</td><td>" . $row["schaddressj"]. "</td><td>" . $row["yrcompj"]. "</td><td>".$row["date"]. "</td><td> <button id='" . $statusId . "' class='status-button'>Pending</button></td>";	
-
-}
-
-
-echo "</table>";
-}
-else { echo "0 results"; }
-
-?>
-</table>
-</div>
-
-<br>
-<br>
-
-
-        <div class="col-12 p-3 mb-2 bg-transparent" style="color: light;">
-
-        <h3>Grade 12</h3>
-        <h6>General Academic Strand (GAS)</h6>
-
-        <table id="myTable">
-            <tr>
-            <th>LRN</th>
-            <th>Last Name</th>
-            <th>First Name</th>
-            <th>Middle Name</th>
-            <th>Extension</th>
-            <th>Birthday</th>
-            <th>Age</th>
-            <th>Height</th>
-            <th>Weight</th>
-            <th>Civil Status</th>
-            <th>Nationality</th>
-            <th>Place of Birth</th>
-            <th>Sex</th>
-            <th>Religion</th>
-            <th>Contact Number</th>
-            <th>Address</th>
-            <th>Grade Level</th>
-            <th>Track</th>
-            <th>Strand</th>
-            <th>PSA</th>
-            <th>Card</th>
-            <th>Picture</th>
-            <th>Completion Form</th>
-            <th>Contact Person</th>
-            <th>Address</th>
-            <th>Relation</th>
-            <th>Tel. No</th>
-            <th>Elem School Name</th>
-            <th>School Address</th>
-            <th>Year of Completion (Elem)</th>
-            <th>JHS School Name</th>
-            <th>School Address</th>
-            <th>Year of Completion (jhs)</th>
-            <th>Date Enrolled</th>
-            <th>Status</th>
-
-            </tr>
-        <?php
-        $conn = mysqli_connect("localhost", "root", "", "enrollment");
-        // Check connection
-
-
-
-        if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-        }
-        $sql = "SELECT * FROM student_info WHERE grlevel='Grade 12' AND strand='General Academic Strand (GAS)'";
-        $result = $conn->query($sql);
-        if ($result->num_rows > 0) {
-        // output data of each row
-        while($row = $result->fetch_assoc()) {
-        $address = "Purok" .$row["purok"] . ", " . $row["brgy"] . ", " . $row["municipality"].",".$row["province"];
-        $student_id = $row["student_id"]; // Assuming this is the student's unique identifier in the database
-        $statusId = "statusButton_" . $student_id;
-
-        echo "<tr><td>" . $row["lrn"]. "</td><td>" . $row["lname"] . "</td><td>" . $row["fname"]. "</td><td>" . $row["mname"]. "</td><td>" . $row["extension"]. "</td><td>" . $row["birthdate"]. "</td><td>" . $row["age"]. "</td><td>" . $row["height"]. "</td><td>" . $row["weight"]. "</td><td>" . $row["cstatus"]. "</td><td>" . $row["nationality"]. "</td><td>" . $row["place_birth"]. "</td><td>" . $row["sex"]. "</td><td>" .$row["religion"]. "</td><td>" .$row["contact"]. "</td><td>" .$address. "</td><td>" .$row["grlevel"]. "</td><td>" .$row["track"]. "</td><td>" .$row["strand"]. "</td><td>" .$row["psa"]. "</td><td>" .$row["formcard"]. "</td><td>" .$row["pics"]. "</td><td>" .$row["complform"]. "</td><td>" .$row["fullname"]. "</td><td>" . $row["caddress"]. "</td><td>" . $row["rel"]. "</td><td>" . $row["cpnum"]. "</td><td>" . $row["schname"]. "</td><td>" . $row["schaddress"]. "</td><td>" . $row["yrcomp"]. "</td><td>" . $row["schnamej"]. "</td><td>" . $row["schaddressj"]. "</td><td>" . $row["yrcompj"]. "</td><td>".$row["date"]. "</td><td> <button id='" . $statusId . "' class='status-button'>Pending</button></td>";	
-
-        }
-
-
-        echo "</table>";
-        }
-        else { echo "0 results"; }
-
-        ?>
-        </table>
-        </div>
-
-
-<br>
-<br>
-
-
-<div class="col-12 p-3 mb-2 bg-transparent" style="color: light;">
-
-<h6>Humanities and Social Sciences (HUMMS)</h6>
-
-<table id="myTable">
-     <tr>
-     <th>LRN</th>
-     <th>Last Name</th>
-     <th>First Name</th>
-     <th>Middle Name</th>
-     <th>Extension</th>
-     <th>Birthday</th>
-     <th>Age</th>
-     <th>Height</th>
-     <th>Weight</th>
-     <th>Civil Status</th>
-     <th>Nationality</th>
-     <th>Place of Birth</th>
-     <th>Sex</th>
-     <th>Religion</th>
-     <th>Contact Number</th>
-     <th>Address</th>
-     <th>Grade Level</th>
-     <th>Track</th>
-     <th>Strand</th>
-     <th>PSA</th>
-     <th>Card</th>
-     <th>Picture</th>
-     <th>Completion Form</th>
-     <th>Contact Person</th>
-     <th>Address</th>
-     <th>Relation</th>
-     <th>Tel. No</th>
-     <th>Elem School Name</th>
-     <th>School Address</th>
-     <th>Year of Completion (Elem)</th>
-     <th>JHS School Name</th>
-     <th>School Address</th>
-     <th>Year of Completion (jhs)</th>
-     <th>Date Enrolled</th>
-     <th>Status</th>
-
-     </tr>
-<?php
-$conn = mysqli_connect("localhost", "root", "", "enrollment");
-// Check connection
-
-
-
-if ($conn->connect_error) {
-die("Connection failed: " . $conn->connect_error);
-}
-$sql = "SELECT * FROM student_info WHERE grlevel='Grade 12' AND strand='Humanities and Social Sciences (HUMMS)'";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-// output data of each row
-while($row = $result->fetch_assoc()) {
-$address = "Purok" .$row["purok"] . ", " . $row["brgy"] . ", " . $row["municipality"].",".$row["province"];
-$student_id = $row["student_id"]; // Assuming this is the student's unique identifier in the database
-$statusId = "statusButton_" . $student_id;
-
-echo "<tr><td>" . $row["lrn"]. "</td><td>" . $row["lname"] . "</td><td>" . $row["fname"]. "</td><td>" . $row["mname"]. "</td><td>" . $row["extension"]. "</td><td>" . $row["birthdate"]. "</td><td>" . $row["age"]. "</td><td>" . $row["height"]. "</td><td>" . $row["weight"]. "</td><td>" . $row["cstatus"]. "</td><td>" . $row["nationality"]. "</td><td>" . $row["place_birth"]. "</td><td>" . $row["sex"]. "</td><td>" .$row["religion"]. "</td><td>" .$row["contact"]. "</td><td>" .$address. "</td><td>" .$row["grlevel"]. "</td><td>" .$row["track"]. "</td><td>" .$row["strand"]. "</td><td>" .$row["psa"]. "</td><td>" .$row["formcard"]. "</td><td>" .$row["pics"]. "</td><td>" .$row["complform"]. "</td><td>" .$row["fullname"]. "</td><td>" . $row["caddress"]. "</td><td>" . $row["rel"]. "</td><td>" . $row["cpnum"]. "</td><td>" . $row["schname"]. "</td><td>" . $row["schaddress"]. "</td><td>" . $row["yrcomp"]. "</td><td>" . $row["schnamej"]. "</td><td>" . $row["schaddressj"]. "</td><td>" . $row["yrcompj"]. "</td><td>".$row["date"]. "</td><td> <button id='" . $statusId . "' class='status-button'>Pending</button></td>";	
-
-}
-
-
-echo "</table>";
-}
-else { echo "0 results"; }
-
-?>
-</table>
- </div>
-
-
- <br>
- <br>
-
-
- <div class="col-12 p-3 mb-2 bg-transparent" style="color: light;">
-
-<h6></h6>
-
-<table id="myTable">
-     <tr>
-     <th>LRN</th>
-     <th>Last Name</th>
-     <th>First Name</th>
-     <th>Middle Name</th>
-     <th>Extension</th>
-     <th>Birthday</th>
-     <th>Age</th>
-     <th>Height</th>
-     <th>Weight</th>
-     <th>Civil Status</th>
-     <th>Nationality</th>
-     <th>Place of Birth</th>
-     <th>Sex</th>
-     <th>Religion</th>
-     <th>Contact Number</th>
-     <th>Address</th>
-     <th>Grade Level</th>
-     <th>Track</th>
-     <th>Strand</th>
-     <th>PSA</th>
-     <th>Card</th>
-     <th>Picture</th>
-     <th>Completion Form</th>
-     <th>Contact Person</th>
-     <th>Address</th>
-     <th>Relation</th>
-     <th>Tel. No</th>
-     <th>Elem School Name</th>
-     <th>School Address</th>
-     <th>Year of Completion (Elem)</th>
-     <th>JHS School Name</th>
-     <th>School Address</th>
-     <th>Year of Completion (jhs)</th>
-     <th>Date Enrolled</th>
-     <th>Status</th>
-
-     </tr>
-<?php
-$conn = mysqli_connect("localhost", "root", "", "enrollment");
-// Check connection
-
-
-
-if ($conn->connect_error) {
-die("Connection failed: " . $conn->connect_error);
-}
-$sql = "SELECT * FROM student_info WHERE grlevel='Grade 12' AND strand='Humanities and Social Sciences (HUMMS)'";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-// output data of each row
-while($row = $result->fetch_assoc()) {
-$address = "Purok" .$row["purok"] . ", " . $row["brgy"] . ", " . $row["municipality"].",".$row["province"];
-$student_id = $row["student_id"]; // Assuming this is the student's unique identifier in the database
-$statusId = "statusButton_" . $student_id;
-
-echo "<tr><td>" . $row["lrn"]. "</td><td>" . $row["lname"] . "</td><td>" . $row["fname"]. "</td><td>" . $row["mname"]. "</td><td>" . $row["extension"]. "</td><td>" . $row["birthdate"]. "</td><td>" . $row["age"]. "</td><td>" . $row["height"]. "</td><td>" . $row["weight"]. "</td><td>" . $row["cstatus"]. "</td><td>" . $row["nationality"]. "</td><td>" . $row["place_birth"]. "</td><td>" . $row["sex"]. "</td><td>" .$row["religion"]. "</td><td>" .$row["contact"]. "</td><td>" .$address. "</td><td>" .$row["grlevel"]. "</td><td>" .$row["track"]. "</td><td>" .$row["strand"]. "</td><td>" .$row["psa"]. "</td><td>" .$row["formcard"]. "</td><td>" .$row["pics"]. "</td><td>" .$row["complform"]. "</td><td>" .$row["fullname"]. "</td><td>" . $row["caddress"]. "</td><td>" . $row["rel"]. "</td><td>" . $row["cpnum"]. "</td><td>" . $row["schname"]. "</td><td>" . $row["schaddress"]. "</td><td>" . $row["yrcomp"]. "</td><td>" . $row["schnamej"]. "</td><td>" . $row["schaddressj"]. "</td><td>" . $row["yrcompj"]. "</td><td>".$row["date"]. "</td><td> <button id='" . $statusId . "' class='status-button'>Pending</button></td>" . "</button></td>";	
-
-}
-
-
-echo "</table>";
-}
-else { echo "0 results"; }
-
-?>
-</table>
- </div>
+                <div class="container-fluid" id="main">
+
+                    <!-- Column title -->
+                    <div class="row border-bottom mb-2 bg-dark-subtle px-2">
+                        <div class="col-md-2 p-0">
+                            <p class="m-0">LRN</p>
+                        </div>
+                        <div class="col-md-3 p-0">
+                            <p class="m-0">Name</p>
+                        </div>
+                        <div class="col-md-1 p-0">
+                            <p class="m-0">Yr Level</p>
+                        </div>
+                        <div class="col-md-3 p-0">
+                            <p class="m-0">Strand</p>
+                        </div>
+                        <div class="col-md-1 p-0">
+                            <p class="m-0">Status</p>
+                        </div>
+                        <div class="col-md-2 p-0">
+                            <p class="m-0">Action</p>
+                        </div>
+                    </div>
+    
+                    <!-- LIST -->
+                    <!-- INDIVIDUAL INFO -->
+                    <div id="individual-info-container" class="">
+                        <!-- ACTUAL DATA WILL BE INSERTED DYNAMICALLY -->
+                        <!-- <div class="col-md-2 p-0">
+                            <p class="mt-2 mb-2">321654987</p>
+                        </div>
+                        <div class="col-md-3 p-0">
+                            <p class="mt-2 mb-2">Moralde, Jonathan H.</p>
+                        </div>
+                        <div class="col-md-1 p-0">
+                            <p class="mt-2 mb-2">Grade 12</p>
+                        </div>
+                        <div class="col-md-3 p-0">
+                            <p class="mt-2 mb-2">General Academic Strand (GAS)</p>
+                        </div>
+                        <div class="col-md-1 p-0">
+                            <p class="mt-2 mb-2">Pending</p>
+                        </div>
+                        <div class="col-md-2 p-0 d-flex justify-content-between align-items-center">
+                            <button class="btn btn-outline-primary mb-1">View Details</button>
+                            <button class="btn btn-outline-primary mb-1">Approve</button>
+                        </div> -->
+                    </div>
+                    <!-- END OF INDIVIDUAL INFO -->
+                </div>
+                
+            </section>
             </div>
         </div>
+
     </div>
+
+
+    <!-- Modal for displaying student details -->
+<div class="modal fade " id="studentDetailsModal" tabindex="-1" role="dialog" aria-labelledby="studentDetailsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header d-flex justify-content-center ">
+        <h5 class="modal-title fs-3 text-dark" id="studentDetailsModalLabel">Student Details</h5>
+        
+      </div>
+      <div class="modal-body container-fluid">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger close-btn" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
 
-<!--
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    // Get all elements with class 'status-button'
-    var buttons = document.querySelectorAll(".status-button");
-
-    // Add a click event listener to each button
-    buttons.forEach(function (button) {
-        button.addEventListener("click", function () {
-            // Get the student_id from the button's id
-            var studentId = this.id.split("_")[1];
-
-            // Send an AJAX request to update the status
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "update_status.php", true);
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    // Update the button text when the status is updated
-                    if (xhr.responseText === "1") {
-                        button.textContent = "Approved";
-                    } else if (xhr.responseText === "0") {
-                        button.textContent = "Pending";
-                    } else {
-                        console.error("Error updating status.");
-                    }
-                }
-            };
-            xhr.send("student_id=" + studentId);
-        });
-    });
-});
-</script>
--->
-
-<script>
-    // Select all buttons with class 'status-button'
-    const statusButtons = document.querySelectorAll(".status-button");
-
-    statusButtons.forEach(button => {
-        const studentId = button.getAttribute("id").split("_")[1]; // Extract student ID
-
-        // Check if the button was previously approved
-        const isApproved = localStorage.getItem("buttonApproved_" + studentId);
-
-        if (isApproved === "true") {
-            button.textContent = "Approved";
-            button.classList.add("approved");
-            button.disabled = true;
-        }
-
-        button.addEventListener("click", function () {
-            if (!button.classList.contains("approved")) {
-                button.textContent = "Approved";
-                button.classList.add("approved");
-                button.disabled = true;
-
-                // Store the approval state in local storage
-                localStorage.setItem("buttonApproved_" + studentId, "true");
-            }
-        });
-    });
-</script>
 
 
 
 
 
-<script src="../plugins/bootstrap.bundle.min.js"></script>
-    <script src="../plugins/bootstrap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
 <script src="./index.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.6/js/jquery.dataTables.js"></script>
+
+<script src="./allstudent.js"></script>
 
 
 
-<script>
-    $(document).ready(function () {
-        $('#myTable').DataTable({
-            "order": [[1, "asc"]], // Default sorting (e.g., sorting by Name column)
-            "columnDefs": [
-                {
-                    "targets": [17], // Replace with the correct column index of the Grade Level column
-                    "render": function (data, type, row) {
-                        // Convert "Grade 11" to 11 and "Grade 12" to 12 for sorting
-                        return data.replace("Grade ", "") * 1;
-                    }
-                }
-            ]
-        });
-    });
-</script>
+
+
   
 </body>
 </html>

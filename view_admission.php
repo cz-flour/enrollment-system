@@ -46,6 +46,7 @@ if ($result) {
 
 
 
+
     <nav class="navbar navbar-expand-lg fixed-top">
       <div class="container-fluid">
         <img src="logo.png" id="logo"alt="Logo"class="navbar-brand" height="auto" width="70">
@@ -192,6 +193,7 @@ body{
                 echo '<th>Grade Level</th>';
                 echo '<th>Track</th>';
                 echo '<th>Strand</th>';
+                echo '<th>Section</th>';
                 echo '<th>Status</th>';
                 echo '</tr></thead>';
 
@@ -201,6 +203,7 @@ body{
                 echo '<td>' . $grlevel.'</td>';
                 echo '<td>' . $track.'</td>';
                 echo '<td>' . $strand.'</td>';
+                echo '<td id="assignedSection" class="text-danger">Pending</td>';
                 echo '<td id="approvalStatus"></td>';
 
     echo '</tr>';
@@ -254,9 +257,12 @@ $(document).ready(function () {
 });
 </script>
 
-<script>
+<!-- <script>
     // Assuming you have access to studentId on this page
-    var studentId = <?php echo $_SESSION['user_id']; ?>; // Assuming PHP is used to retrieve the student ID
+    var studentId = <?php 
+    
+    // echo $_SESSION['user_id']; 
+    ?>; // Assuming PHP is used to retrieve the student ID
     
     // Retrieve the approval state from local storage
     var approvalState = localStorage.getItem("buttonApproved_" + studentId);
@@ -268,6 +274,7 @@ $(document).ready(function () {
     } else {
         approvalStatusElement.textContent = "Not Approved";
     }
-</script>
+</script> -->
+<script src="./view_admission.js"></script>
 
 </html>
