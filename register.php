@@ -68,20 +68,41 @@
             text-align: center;
             margin-top: 20px;
         }
+        .navbar-brand img {
+        margin-right: 10px; /* Adjust the margin as needed to separate the logo and title */
+    }
+
+    .navbar-brand {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-title {
+        font-size: 1.5rem; /* Adjust the font size as needed */
+    }
     </style>
 
-    <header>
-        <nav class="navbar navbar-expand-lg fixed-top">
-            <div class="container-fluid">
-                <img src="logo.png" alt="Logo" class="navbar-brand" height="70" width="70">
+<header>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-brand">
+                <img src="logo.png" alt="Logo" height="70" width="70">
                 <div class="nav-title">Our Lady of the Roses Montessori Learning Center</div>
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
+</header>
+
 </head>
 
 <body>
-<div class="alert">
+
+
+
+
+<div class="container content">
+    <h3>Create an Account</h3>
+    <div class="alert">
     <?php
     if(isset($_SESSION['status'])){
         echo "<h4>".$_SESSION['status']."</h4>";
@@ -89,11 +110,6 @@
     }
     ?>
 </div>
-
-
-
-<div class="container content">
-    <h3>Create an Account</h3>
     <form action="reg_process.php" method="post">
  
 

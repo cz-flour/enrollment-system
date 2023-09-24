@@ -1,9 +1,4 @@
 
-<?php
-session_start();
-?>
-
-
 <!DOCTYPE html lang=en>
 <html>
     
@@ -32,17 +27,6 @@ session_start();
 
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
-            <li class="nav-item ">
-              <a class="nav-link flex-center" aria-current="page" href="home.php">
-              <i class="fa fa-fw fa-home"></i>
-                Home
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="aboutus.php">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link cursor-pointer" id="loginbtn" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
             </li> 
           </ul>
         </div>
@@ -77,13 +61,28 @@ session_start();
       margin-top: 20px;
       padding: 20px 30px;
 }
+.center-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.navbar-brand {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-title {
+        font-size: 1.5rem; /* Adjust the font size as needed */
+    }
   </style>
           
   <body >
 
 
 
-  <!-- <div class="message">
+  <div class="message">
         <?php
      if (isset($_GET['msg'])) {
       $msg = $_GET['msg'];
@@ -92,24 +91,24 @@ session_start();
     // $msg="Error: " . $sql . "<br>" . mysqli_error($conn);
   }
         ?>
-    </div> -->
+    </div>
 
-
+    <?php
+if (isset($_GET['msg'])) {
+    $msg = $_GET['msg'];
+    echo '<div class="alert alert-success">' . $msg . '</div>';
+}
+?>
 
     <div class="container">
       <div class="content">
-        <img src="logo1.png" alt="logo" class="logo">
+        <!-- <img src="logo1.png" alt="logo" class="logo"> -->
         <div class="container-fluid">
-  <h1> Please check your email and verify your account to complete the registration process.</h1>
-    <div id="texxx">
-      <h5>If your email is verified, proceed to login</h5>
-  <!-- <p>Online Enrollment System</p> -->
-  <div class="button">
-        <!-- <a href="register.php"><button class="register-button" href="register.php">Register Now</button> </a> -->
+        <div class="center-text">
+  <h1>Email not yet verified! <br>
+        </h1>
+</div>
 
-        <button type="button " class="btn register-button " data-bs-toggle="modal" data-bs-target="#loginModal">
-          Log in
-        </button>
       </div>
 </div>
 </div>
@@ -125,7 +124,6 @@ session_start();
                 <h5 class="modal-title text-primary" id="exampleModalLabel">Login</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-
             <div class="modal-body">
                 <form action="login.php" method="post">
                     <div class="form-group">
@@ -137,7 +135,7 @@ session_start();
                         <input type="password" placeholder="Enter Password" class="form-control" id="pwd" name="pwd" required>
                     </div>
                     <div class="modal-footer">
-                    <button type="submit"  name = "submit" class="btn btn-success">Login</button>
+                    <button type="submit" class="btn btn-success">Login</button>
                     </div>
                     
                 </form>

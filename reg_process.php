@@ -42,8 +42,9 @@ function sendemail_verify($email,  $name, $verify_token){
     // $mail->Debugoutput = 'html'; // Display debug output as HTML
     
    $mail->Body = $email_template;
+   
    $mail->send();
-//    echo 'Message has been sent';
+
     }
     catch (Exception $e){
         echo "Email could not be sent. Mailer Error: {$mail->ErrorInfo}";
@@ -53,22 +54,23 @@ function sendemail_verify($email,  $name, $verify_token){
 if (isset($_POST['email'])) {
     $email = $_POST['email'];
     $pwd = $_POST['pwd'];
-
+    $verify_token = md5(rand());
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // Check if the email already exists in the database
-    $sql_check = "SELECT * FROM user WHERE email = '$email'";
+
+    $sql_check = "SELECT email FROM user WHERE email = '$email'";
     $result_check = mysqli_query($conn, $sql_check);
 
     if (mysqli_num_rows($result_check) > 0) {
-        $msg = "User already exists.";
-        $_SESSION['status'] = "<h2>Password reset link sent successfully.</h2>"; // Set the success message
+        // $msg = "User already exists.";
+        $_SESSION['status'] = "<h2>Email is already existing.</h2>"; // Set the success message
         header("location: register.php");
+        exit();
     } else {
         // Generate a verification token
-        $verify_token = md5(rand());
+     
 
 
         $name = 'Montessori Learning Center';
@@ -77,6 +79,7 @@ if (isset($_POST['email'])) {
         // Insert the new user into the database
         $sql_insert = "INSERT INTO user (email, pwd, verify_token) VALUES ('$email', '$pwd', '$verify_token')";
 
+        
         if (mysqli_query($conn, $sql_insert)) {
              sendemail_verify($email, $name, $verify_token);
 

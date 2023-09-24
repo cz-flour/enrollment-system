@@ -51,6 +51,14 @@
     margin-top: 5px; /* Add margin above the "Forgot your password?" link */
     padding: 5px; /* Add padding around the text */
 }
+.navbar-brand {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-title {
+        font-size: 1.5rem; /* Adjust the font size as needed */
+    }
 </style>
 
 <body>

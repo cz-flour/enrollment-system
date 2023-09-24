@@ -118,6 +118,14 @@ if ($result && $row = mysqli_fetch_assoc($result)) {
       font-weight: 300;
       font-size: 20px;
 }
+.navbar-brand {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-title {
+        font-size: 1.5rem; /* Adjust the font size as needed */
+    }
 
 
 @media screen and (max-width: 786px) {
