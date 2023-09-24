@@ -27,7 +27,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item ">
-              <a class="nav-link flex-center" aria-current="page" href="home2.php">
+              <a class="nav-link flex-center" aria-current="page" href="home.php">
               <i class="fa fa-fw fa-home"></i>
                 Home
               </a>
@@ -36,7 +36,7 @@
               <a class="nav-link" href="aboutus.php">About Us</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link cursor-pointer" id="logoutbtn" data-bs-toggle="modal" data-bs-target="#logoutModal"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
+            <!-- <a class="nav-link cursor-pointer" id="logoutbtn" data-bs-toggle="modal" data-bs-target="#logoutModal"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a> -->
             </li> 
           </ul>
         </div>
@@ -59,6 +59,14 @@
               flex-wrap: wrap;
               justify-content: space-evenly;
             }
+            .navbar-brand {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-title {
+        font-size: 1.5rem; /* Adjust the font size as needed */
+    }
           </style>
   <body >
 
