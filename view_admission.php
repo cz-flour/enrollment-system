@@ -1,25 +1,34 @@
 <?php
-include_once './connection.php';
+include_once 'connection.php';
 session_start();
+
 $user_id = $_SESSION['user_id'];
 
 $sql = "SELECT * FROM student_info WHERE user_id = '$user_id'";
 $result = $conn->query($sql);
 
-if ($result) {
-    // Assuming there's only one row returned for the user
-    $row = mysqli_fetch_assoc($result);
+$enrollButtonVisible = true;
+
+if ($result && $row = mysqli_fetch_assoc($result)) {
+    $enrollButtonVisible = false;
     $userName = $row['fname'];
     $lrn = $row['lrn'];
     $name = $row['fname'] . ' ' . $row['mname'] . ' ' . $row['lname'];
     $grlevel = $row['grlevel'];
     $track = $row['track'];
     $strand = $row['strand'];
-
-} else {
-    // Handle the case where the query fails or no data is found
-    $userName = "Guest"; // Display a default name
 }
+
+ else {
+ 
+      $userName = "N/A";
+      $lrn = "N/A";
+      $name = "N/A";
+      $grlevel = "N/A";
+      $track = "N/A";
+      $strand = "N/A";
+  }
+
 
 ?>
 
@@ -110,6 +119,14 @@ if ($result) {
       font-weight: 300;
       font-size: 20px;
 }
+.navbar-brand {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-title {
+        font-size: 1.5rem; /* Adjust the font size as needed */
+    }
 
 
 @media screen and (max-width: 786px) {
@@ -181,9 +198,16 @@ body{
             <hr>
             <br>
             <h2>Welcome, <?php echo $userName;?> &#10024;</h2>
+            <?php if ($enrollButtonVisible): ?>
+            <a href="eform.php" class="btn btn-primary">Enroll</a>
+  
+        <?php endif; ?>
+        <a href="eformdownload.php" class="btn btn-success" download>Download</a>
+  
             <br>
             <br>
             <h5>S.Y. 2023-2024</h5>
+            
             <table>
                 <?php
 
@@ -205,7 +229,7 @@ body{
                 echo '<td>' . $strand.'</td>';
                 echo '<td id="assignedSection" class="text-danger">Pending</td>';
                 echo '<td id="approvalStatus"></td>';
-
+                // var_dump($_SESSION);
     echo '</tr>';
                 echo '</tr>';
                 

@@ -9,7 +9,6 @@ $conn = mysqli_connect('localhost','root','','enrollment');
 if (!$conn) {
 	die ("Connection Failed" .mysqli_connect_error());
 } 
-
 //
 include_once "function.php";
 
