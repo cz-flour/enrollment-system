@@ -30,10 +30,10 @@
     <hr style="border:1px solid; background-color:#2c2b2b; border-color:#3B3131;">
 
 
-    <a href="index.php" class="links">
+    <!-- <a href="index.php" class="links">
         <i class="fa fa-home icons"></i>
         <span class="link__name">Home</span>
-    </a>
+    </a> -->
     <a href="allstudents.php" class="links">
         <i class="fa fa-users icons"></i>
         <span class="link__name">All Students</span>
@@ -44,7 +44,7 @@
     </a>
         
 
-  <a href="logout.php" class="links">
+  <a href="../logout.php" class="links">
     <i class="fa fa-sign-out icons"></i>
     <span class="link__name">Logout</span>
 </a>

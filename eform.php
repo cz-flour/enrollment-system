@@ -1,6 +1,6 @@
 <?php 
     // UNCOMMENT MO NALANG KADING CONNECTION 
-    // require './connection.php'
+    require './connection.php'
      
     
 ?>
@@ -360,7 +360,7 @@
                         <input type="number" class="form-control" id="yrcompj" name="yrcompj" placeholder="Enter Year of Completion">
                     </div>
                 </div> 
-                <button type="submit "class="btn btn-success" id="next"> Submit </button>
+                <button type="submit "class="btn btn-success" id="next" name="submit"> Submit </button>
             </div>
         </form>
     </div>

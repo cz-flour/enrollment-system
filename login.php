@@ -31,7 +31,7 @@ if(isset($_POST['email'])){
                 $_SESSION['user_id'] = $row['user_id'];
     
                 if ($isAdmin) {
-                    header("location: admin/index.php");
+                    header("location: admin/allstudents.php");
                 } else {
                     echo "<script>alert('You are logged in');</script>";
                     header("location: view_admission.php");
