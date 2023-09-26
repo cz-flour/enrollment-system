@@ -6,7 +6,12 @@ session_start();
 if (isset($_SESSION['user_id'])) {
     header("Location: view_admission.php");
     exit(); 
+
 }
+// else{
+//     header("location: home.php");
+
+// }
 ?>
 <head>
     <meta charset="UTF-8">
@@ -80,12 +85,12 @@ if (isset($_SESSION['user_id'])) {
         <div class="nav-title">Our Lady of the Roses Montessori Learning Center</div>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link flex-center bold-text" aria-current="page" href="view_admission.php">
+                <!-- <li class="nav-item">
+                    <a class="nav-link flex-center bold-text" aria-current="page" href="home.php">
                         <i class="fa fa-fw fa-home"></i>
                         Home
                     </a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a class="nav-link bold-text" href="aboutus.php">About Us</a>
                     </li>
