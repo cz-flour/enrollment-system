@@ -1,9 +1,12 @@
 <?php 
     // UNCOMMENT MO NALANG KADING CONNECTION 
     require './connection.php'
-     
+
+
+
     
 ?>
+
 <!DOCTYPE html lang=en>
 <html>
     
@@ -50,36 +53,37 @@
         #collapseContent {
             display: none;
             }
+            .bold-text{
+          font-weight: bold;
+        }
             
           </style>
   <body >
 
-    <nav class="navbar navbar-expand-lg fixed-top">
-      <div class="container-fluid">
-        <img src="logo.png" alt="Logo"class="navbar-brand" height="70" width="70">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <!-- <div class="nav-title">Our Lady of the Roses Montessori Learning Center</div> -->
-
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid">
+        <img src="logo.png" alt="Logo" class="navbar-brand" height="70" width="70">
+        <div class="nav-title">Our Lady of the Roses Montessori Learning Center</div>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
-            <li class="nav-item ">
-            <a class="nav-link flex-center" aria-current="page" href="home2.php"><i class="fa fa-fw fa-home"></i>
-                Home
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="aboutus.php">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link cursor-pointer" id="logoutbtn" data-bs-toggle="modal" data-bs-target="#logoutModal"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
-            </li> 
-          </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link flex-center bold-text" aria-current="page" href="view_admission.php">
+                        <i class="fa fa-fw fa-home"></i>
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link bold-text" href="aboutus.php">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link cursor-pointer bold-text" id="logoutbtn" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                        <i class="fa fa-sign-out" aria-hidden="true"></i>Logout
+                    </a>
+                </li>
+            </ul>
         </div>
-      </div>
-    </nav>
-
+    </div>
+</nav>
     <div class="container" style="padding-bottom: 30px">
         <form method="POST" action="./eform_process.php" >
             <div class="row ">

@@ -1,7 +1,10 @@
 
 <!DOCTYPE html lang=en>
 <html>
-    
+    <?php
+session_start();
+
+?>
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,13 +30,16 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item ">
-              <a class="nav-link flex-center" aria-current="page" href="home.php">
+              <a class="nav-link flex-center bold-text" aria-current="page" href="view_admission.php">
               <i class="fa fa-fw fa-home"></i>
                 Home
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="aboutus.php">About Us</a>
+              <!-- <a class="nav-link" href="aboutus.php">About Us</a> -->
+              <li class="nav-item">
+            <a class="nav-link flex-center bold-text" id="logoutbtn" data-bs-toggle="modal" data-bs-target="#logoutModal"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
+            </li> 
             </li>
             <li class="nav-item">
             <!-- <a class="nav-link cursor-pointer" id="logoutbtn" data-bs-toggle="modal" data-bs-target="#logoutModal"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a> -->
@@ -67,6 +73,9 @@
     .nav-title {
         font-size: 1.5rem; /* Adjust the font size as needed */
     }
+    .bold-text {
+    font-weight: bold;
+}
           </style>
   <body >
 

@@ -13,75 +13,91 @@
     <title>Reset Password</title>
     <link rel="icon" href="logo.png">
     <header>
-        <nav class="navbar navbar-expand-lg fixed-top">
-            <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container-fluid">
+            <div class="logo-and-title">
                 <img src="logo.png" alt="Logo" class="navbar-brand" height="70" width="70">
                 <div class="nav-title">Our Lady of the Roses Montessori Learning Center</div>
             </div>
-        </nav>
-    </header>
-    <style>
-        body {
-            background-color: #f8f8f8;
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+        </div>
+    </nav>
+</header>
+<style>
+    body {
+        background-color: #f8f8f8;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
 
-        .container {
-            max-width: 400px;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-        }
+    .container {
+        max-width: 400px;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+    }
 
-        .container h3 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+    .container h3 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
 
-        .form-group {
-            margin-bottom: 20px;
-        }
+    .form-group {
+        margin-bottom: 20px;
+    }
 
-        label {
-            font-weight: bold;
-        }
+    label {
+        font-weight: bold;
+    }
 
-        .form-control {
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 10px;
-        }
+    .form-control {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+    }
 
-        .form-check-label {
-            font-weight: normal;
-        }
+    .form-check-label {
+        font-weight: normal;
+    }
 
-        .btn-primary {
-            background-color: #007bff;
-            border: none;
-        }
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+    }
 
-        .btn-primary:hover {
-            background-color: #0056b3;
-        }
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
 
-        .forgot-password-link {
-            text-align: center;
-            margin-top: 20px;
-        }
-    </style>
+    .forgot-password-link {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .navbar-brand {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-title {
+        font-size: 1.5rem; /* Adjust the font size as needed */
+    }
+
+    .logo-and-title {
+        display: flex;
+        align-items: center;
+    }
+</style>
 
 
 
 <div class="container content">
     <h3>Reset Password</h3>
-    <form action="forgotpassword_process.php" method="post">
+    <form action="changepassword_process.php" method="post">
        
         <div class="alert">
     <?php
@@ -113,7 +129,7 @@
             </label>
         </div>
 
-        <button type="submit" name="update_password" class="btn btn-primary" id="crtbtn">Update</button>
+        <button type="submit" name="update_password" id="update_password" class="btn btn-primary" id="crtbtn">Update</button>
 
     </form>
 </div>

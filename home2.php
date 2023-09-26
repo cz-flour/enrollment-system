@@ -14,31 +14,30 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="./plugins/popper.min.js"></script>
     
-
     <nav class="navbar navbar-expand-lg fixed-top">
-      <div class="container-fluid">
-        <img src="logo.png" alt="Logo"class="navbar-brand" height="70" width="70">
-        
+    <div class="container-fluid">
+        <img src="logo.png" alt="Logo" class="navbar-brand" height="70" width="70">
         <div class="nav-title">Our Lady of the Roses Montessori Learning Center</div>
-
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
-            <li class="nav-item ">
-              <a class="nav-link flex-center" aria-current="page" href="home2.php">
-              <i class="fa fa-fw fa-home"></i>
-                Home
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="aboutus.php">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link cursor-pointer" id="logoutbtn" data-bs-toggle="modal" data-bs-target="#logoutModal"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
-            </li> 
-          </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link flex-center bold-text" aria-current="page" href="view_admission.php">
+                        <i class="fa fa-fw fa-home"></i>
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link bold-text" href="aboutus.php">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link cursor-pointer bold-text" id="logoutbtn" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                        <i class="fa fa-sign-out" aria-hidden="true"></i>Logout
+                    </a>
+                </li>
+            </ul>
         </div>
-      </div>
-    </nav>  
+    </div>
+</nav>
 
 </head>
 
@@ -96,7 +95,9 @@
       background-color:mediumseagreen;
       color: black;
 }
-        
+.bold-text {
+    font-weight: bold;
+}
       </style>   
 
   <body >

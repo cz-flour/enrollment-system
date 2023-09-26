@@ -63,7 +63,14 @@
         .btn-primary:hover {
             background-color: #0056b3;
         }
+        .navbar-brand {
+        display: flex;
+        align-items: center;
+    }
 
+    .nav-title {
+        font-size: 1.5rem; /* Adjust the font size as needed */
+    }
   
     </style>
 

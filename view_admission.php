@@ -2,6 +2,9 @@
 include_once 'connection.php';
 session_start();
 
+
+if(isset($_SESSION['user_id'])){
+    
 $user_id = $_SESSION['user_id'];
 
 $sql = "SELECT * FROM student_info WHERE user_id = '$user_id'";
@@ -29,7 +32,7 @@ if ($result && $row = mysqli_fetch_assoc($result)) {
       $strand = "N/A";
   }
 
-
+}
 ?>
 
 
@@ -56,32 +59,30 @@ if ($result && $row = mysqli_fetch_assoc($result)) {
 
 
 
-    <nav class="navbar navbar-expand-lg fixed-top">
-      <div class="container-fluid">
-        <img src="logo.png" id="logo"alt="Logo"class="navbar-brand" height="auto" width="70">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid">
+        <img src="logo.png" alt="Logo" class="navbar-brand" height="70" width="70">
         <div class="nav-title">Our Lady of the Roses Montessori Learning Center</div>
-
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
-            <li class="nav-item ">
-              <a class="nav-link flex-center" aria-current="page" href="after.php">
-              <i class="fa fa-fw fa-home"></i>
-                Home
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="aboutus.php">About Us</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link cursor-pointer" id="logoutbtn" data-bs-toggle="modal" data-bs-target="#logoutModal"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
-            </li> 
-          </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link flex-center bold-text" aria-current="page" href="view_admission.php">
+                        <i class="fa fa-fw fa-home"></i>
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link bold-text" href="aboutus.php">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link cursor-pointer bold-text" id="logoutbtn" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                        <i class="fa fa-sign-out" aria-hidden="true"></i>Logout
+                    </a>
+                </li>
+            </ul>
         </div>
-      </div>
-    </nav>
+    </div>
+</nav>
     </head>
 <style>
     .navbar{
@@ -162,6 +163,7 @@ body{
 }
     .container{
         padding-top: 20px;
+        padding-bottom: 20px;
         width: 100%;
         background-color:white;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -183,6 +185,9 @@ body{
     display: flex; /* Use flexbox for the content */
     justify-content: space-between; /* Put space between items */
 }
+.bold-text {
+    font-weight: bold;
+}
     </style>
 
 
@@ -199,7 +204,7 @@ body{
             <br>
             <h2>Welcome, <?php echo $userName;?> &#10024;</h2>
             <?php if ($enrollButtonVisible): ?>
-            <a href="eform.php" class="btn btn-primary">Enroll</a>
+            <a href="home2.php" class="btn btn-primary">Enroll</a>
   
         <?php endif; ?>
         <a href="eformdownload.php" class="btn btn-success" download>Download</a>
