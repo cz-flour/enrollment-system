@@ -35,6 +35,7 @@ die("Connection failed: " . $conn->connect_error);
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.6/css/jquery.dataTables.css">
 <link rel="stylesheet" href="../css/bootstrap.css">
 <link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
 
 
@@ -165,25 +166,7 @@ h3,h6{
                     <!-- INDIVIDUAL INFO -->
                     <div id="individual-info-container" class="">
                         <!-- ACTUAL DATA WILL BE INSERTED DYNAMICALLY -->
-                        <!-- <div class="col-md-2 p-0">
-                            <p class="mt-2 mb-2">321654987</p>
-                        </div>
-                        <div class="col-md-3 p-0">
-                            <p class="mt-2 mb-2">Moralde, Jonathan H.</p>
-                        </div>
-                        <div class="col-md-1 p-0">
-                            <p class="mt-2 mb-2">Grade 12</p>
-                        </div>
-                        <div class="col-md-3 p-0">
-                            <p class="mt-2 mb-2">General Academic Strand (GAS)</p>
-                        </div>
-                        <div class="col-md-1 p-0">
-                            <p class="mt-2 mb-2">Pending</p>
-                        </div>
-                        <div class="col-md-2 p-0 d-flex justify-content-between align-items-center">
-                            <button class="btn btn-outline-primary mb-1">View Details</button>
-                            <button class="btn btn-outline-primary mb-1">Approve</button>
-                        </div> -->
+                        
                     </div>
                     <!-- END OF INDIVIDUAL INFO -->
                 </div>

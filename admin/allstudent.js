@@ -43,43 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
     class: null,
   };
 
-  // function generatePDFFromHTML(htmlElement) {
-  //   // Create a new jsPDF instance
-  //   const doc = new jsPDF({ unit: "pt" });
-
-  //   // Use html2canvas to capture the HTML element as an image
-  //   html2canvas(htmlElement, {
-  //     // Exclude the margin by setting useCORS to true and ignoring margins
-  //     useCORS: true,
-  //     ignoreElements: (element) => {
-  //       // Check if the element is a margin element (you can adjust this condition as needed)
-  //       return element.style.margin !== "0px";
-  //     },
-  //   }).then((canvas) => {
-  //     // Convert the canvas to an image data URL
-  //     const imageData = canvas.toDataURL("image/png");
-
-  //     // Get the actual width and height of the image
-  //     const image = new Image();
-  //     image.src = imageData;
-  //     const imgWidth = image.width;
-  //     const imgHeight = image.height;
-
-  //     // Add the image to the PDF document with its actual size
-  //     doc.addImage(
-  //       imageData,
-  //       "PNG",
-  //       0,
-  //       0,
-  //       doc.internal.pageSize.width,
-  //       imgHeight
-  //     );
-
-  //     // Save or display the PDF
-  //     doc.save("MyPdfFile.pdf");
-  //   });
-  // }
-
   function generatePDFFromHTML(htmlElement) {
     // Create a new jsPDF instance
     const doc = new jsPDF({ unit: "pt" });
@@ -486,6 +449,9 @@ document.addEventListener("DOMContentLoaded", () => {
     return sqlQuery;
   }
 
+  //   return sqlQuery;
+  // }
+
   // APPROVE BTN
   const handleApproveButtonClick = (studentId) => {
     // Send an AJAX request to update the status in the database
@@ -533,30 +499,68 @@ document.addEventListener("DOMContentLoaded", () => {
         modalAssign.parentNode.removeChild(modalAssign);
       }
 
+      // filename
+      const psa = studentInfo.psa.file_name;
+      const formcard = studentInfo.formcard.file_name;
+      const complform =
+        studentInfo.complform != null ? studentInfo.complform.file_name : "";
+      const pics = studentInfo.pics != null ? studentInfo.pics.file_name : "";
+      // file_location
+      const psaLoc = studentInfo.psa.file_location;
+      const formcardLoc = studentInfo.formcard.file_location;
+      const complformLoc =
+        studentInfo.complform != null
+          ? studentInfo.complform.file_location
+          : "";
+      const picsLoc =
+        studentInfo.pics != null ? studentInfo.pics.file_location : "";
+
       // Populate the modal with student details
       modalBody.innerHTML = `
         <div>
         <p class="mb-1 fs-5 text-center fw-bold text-uppercase">Personal Information</p>
           <div class="d-flex justify-content-around mb-3">
             <div class="w-50">
-              <p class="mb-1"><strong>Name:</strong> ${studentInfo.fname}, ${studentInfo.lname} ${studentInfo.mname}</p>
+              <p class="mb-1"><strong>Name:</strong> ${studentInfo.fname}, ${
+        studentInfo.lname
+      } ${studentInfo.mname}</p>
               <p class="mb-1"><strong>LRN:</strong> ${studentInfo.lrn}</p>
-              <p class="mb-1"><strong>Year Level:</strong> ${studentInfo.grlevel}</p>
+              <p class="mb-1"><strong>Year Level:</strong> ${
+                studentInfo.grlevel
+              }</p>
               <p class="mb-1"><strong>Track:</strong> ${studentInfo.track}</p>
               <p class="mb-1"><strong>Strand:</strong> ${studentInfo.strand}</p>
-              <p class="mb-1"><strong>Civil Status:</strong> ${studentInfo.cstatus}</p>
-              <p class="mb-1"><strong>Nationality:</strong> ${studentInfo.nationality}</p>
-              <p class="mb-1"><strong>Contact Number:</strong> 0${studentInfo.contact}</p>
+              <p class="mb-1"><strong>Civil Status:</strong> ${
+                studentInfo.cstatus
+              }</p>
+              <p class="mb-1"><strong>Nationality:</strong> ${
+                studentInfo.nationality
+              }</p>
+              <p class="mb-1"><strong>Contact Number:</strong> 0${
+                studentInfo.contact
+              }</p>
             
             </div>
             <div class="w-50">
               <p class="mb-1"><strong>Sex:</strong> ${studentInfo.sex}</p>
               <p class="mb-1"><strong>Age:</strong> ${studentInfo.age}</p>
-              <p class="mb-1"><strong>Birth Date:</strong> ${studentInfo.birthdate}</p>
-              <p class="mb-1"><strong>Address:</strong> Purok ${studentInfo.purok}, ${studentInfo.brgy}, ${studentInfo.municipality}, ${studentInfo.province}</p>
-              <p class="mb-1"><strong>Place of Birth:</strong> ${studentInfo.place_birth}</p>
-              <p class="mb-1"><strong>Religion:</strong> ${studentInfo.religion}</p>
-              <p class="mb-1"><strong>Height:</strong> ${studentInfo.height}</p>
+              <p class="mb-1"><strong>Birth Date:</strong> ${
+                studentInfo.birthdate
+              }</p>
+              <p class="mb-1"><strong>Address:</strong> Purok ${
+                studentInfo.purok
+              }, ${studentInfo.brgy}, ${studentInfo.municipality}, ${
+        studentInfo.province
+      }</p>
+              <p class="mb-1"><strong>Place of Birth:</strong> ${
+                studentInfo.place_birth
+              }</p>
+              <p class="mb-1"><strong>Religion:</strong> ${
+                studentInfo.religion
+              }</p>
+              <p class="mb-1"><strong>Height:</strong> ${(
+                studentInfo.height / 12
+              ).toFixed(0)}"${studentInfo.height % 12}</p>
               <p class="mb-1"><strong>Weight:</strong> ${studentInfo.weight}</p>
             </div>
             
@@ -567,24 +571,40 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="d-flex justify-content-around mb-3">
             <div class="w-50">
               <p class="mb-1 fs-5 fw-medium">Elementary:</p>
-              <p class="mb-1"><strong>School Name:</strong> ${studentInfo.scname}</p>
-              <p class="mb-1"><strong>Address:</strong> ${studentInfo.scaddress}</p>
-              <p class="mb-1"><strong>Year Graduated:</strong> ${studentInfo.yrcomp}</p>
+              <p class="mb-1"><strong>School Name:</strong> ${
+                studentInfo.schname
+              }</p>
+              <p class="mb-1"><strong>Address:</strong> ${
+                studentInfo.schaddress
+              }</p>
+              <p class="mb-1"><strong>Year Graduated:</strong> ${
+                studentInfo.yrcomp
+              }</p>
             </div>
             <div class="w-50">
               <p class="mb-1 fs-5 fw-medium">Junior High:</p>
-              <p class="mb-1"><strong>School Name:</strong> ${studentInfo.scnamej}</p>
-              <p class="mb-1"><strong>Address:</strong> ${studentInfo.scaddressj}</p>
-              <p class="mb-1"><strong>Year Graduated:</strong> ${studentInfo.yrcompj}</p>
+              <p class="mb-1"><strong>School Name:</strong> ${
+                studentInfo.schnamej
+              }</p>
+              <p class="mb-1"><strong>Address:</strong> ${
+                studentInfo.schaddressj
+              }</p>
+              <p class="mb-1"><strong>Year Graduated:</strong> ${
+                studentInfo.yrcompj
+              }</p>
             </div>
           </div>
 
           <p class="mb-1 fs-5 text-center fw-bold text-uppercase">Submitted Files</p>
           <div>
-              <p class="mb-1"><strong>PSA Birth Certificate:</strong> ${studentInfo.psa}</p>
-              <p class="mb-1"><strong>Card:</strong> ${studentInfo.formcard}</p>
-              <p class="mb-1"><strong>Completion Form:</strong> ${studentInfo.complform}</p>
-              <p class="mb-1"><strong>Picture:</strong> ${studentInfo.pics}</p>
+              <p class="mb-1"><strong>PSA Birth Certificate:</strong> <a href="../${psaLoc}" target="_blank" class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">${psa} <i class="bi bi-box-arrow-in-up-right"></i></a></p>
+              <p class="mb-1"><strong>Card:</strong> <a href="../${formcardLoc}" target="_blank" class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">${formcard} <i class="bi bi-box-arrow-in-up-right"></i></a></p>
+              <p class="mb-1 ${
+                studentInfo.grlevel == "Grade 12" ? "hide" : ""
+              }"><strong>Completion Form:</strong> <a href="../${complformLoc}" target="_blank" class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">${complform} <i class="bi bi-box-arrow-in-up-right"></i></a></p>
+              <p class="mb-1 ${
+                studentInfo.grlevel == "Grade 12" ? "hide" : ""
+              }"><strong>Picture:</strong> <a href="../${picsLoc}" target="_blank" class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">${pics} <i class="bi bi-box-arrow-in-up-right"></i></a></p>
           </div>
         
         
