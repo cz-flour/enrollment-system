@@ -1,9 +1,4 @@
 
-<?php
-session_start();
-?>
-
-
 <!DOCTYPE html lang=en>
 <html>
     
@@ -21,31 +16,47 @@ session_start();
     <script src="./plugins/popper.min.js"></script>
 
 
+
     <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container-fluid">
+        <img src="logo.png" alt="Logo"class="navbar-brand" height="auto" width="70">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="nav-title">Our Lady of the Roses Montessori Learning Center</div>
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            </li> 
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </head>
+  <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container-fluid">
         <img src="logo.png" alt="Logo" class="navbar-brand" height="70" width="70">
         <div class="nav-title">Our Lady of the Roses Montessori Learning Center</div>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link flex-center bold-text" aria-current="page" href="view_admission.php">
+                    <a class="nav-link flex-center bold-text" aria-current="page" href="home.php">
                         <i class="fa fa-fw fa-home"></i>
                         Home
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link bold-text" href="aboutus.php">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link cursor-pointer ml-auto bold-text"  id="loginbtn" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
-
-                    </li>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link cursor-pointer bold-text" id="logoutbtn" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                        <i class="fa fa-sign-out" aria-hidden="true"></i>Logout
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
-  </head>
-
   <style>
     .container{
       align-items: center;
@@ -73,17 +84,23 @@ session_start();
       margin-top: 20px;
       padding: 20px 30px;
 }
+.center-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* This ensures the content is centered in the viewport height */
+}
 .bold-text {
     font-weight: bold;
 }
-
   </style>
           
   <body >
 
 
 
-  <!-- <div class="message">
+  <div class="message">
         <?php
      if (isset($_GET['msg'])) {
       $msg = $_GET['msg'];
@@ -92,24 +109,31 @@ session_start();
     // $msg="Error: " . $sql . "<br>" . mysqli_error($conn);
   }
         ?>
-    </div> -->
+    </div>
 
-
+    <?php
+if (isset($_GET['msg'])) {
+    $msg = $_GET['msg'];
+    echo '<div class="alert alert-success">' . $msg . '</div>';
+}
+?>
 
     <div class="container">
       <div class="content">
-        <img src="logo1.png" alt="logo" class="logo">
+        <!-- <img src="logo1.png" alt="logo" class="logo"> -->
         <div class="container-fluid">
-  <h1> Please check your email and verify your account to complete the registration process.</h1>
-    <div id="texxx">
-      <h5>If your email is verified, proceed to login</h5>
-  <!-- <p>Online Enrollment System</p> -->
+        <div class="center-text">
+  <h1>Password successfully changed! <br>You can now login</h1>
   <div class="button">
-        <!-- <a href="register.php"><button class="register-button" href="register.php">Register Now</button> </a> -->
+                        <!-- <a href="register.php"><button class="register-button" href="register.php">Register Now</button> </a> -->
+               
+                        <button type="button " class="btn register-button " data-bs-toggle="modal"
+                            data-bs-target="#loginModal">
+                            Log in
+                        </button>
+                    </div>
+</div>
 
-        <button type="button " class="btn register-button " data-bs-toggle="modal" data-bs-target="#loginModal">
-          Log in
-        </button>
       </div>
 </div>
 </div>
@@ -125,7 +149,6 @@ session_start();
                 <h5 class="modal-title text-primary" id="exampleModalLabel">Login</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-
             <div class="modal-body">
                 <form action="login.php" method="post">
                     <div class="form-group">
@@ -137,7 +160,7 @@ session_start();
                         <input type="password" placeholder="Enter Password" class="form-control" id="pwd" name="pwd" required>
                     </div>
                     <div class="modal-footer">
-                    <button type="submit"  name = "submit" class="btn btn-success">Login</button>
+                    <button type="submit" class="btn btn-success">Login</button>
                     </div>
                     
                 </form>

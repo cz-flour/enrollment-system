@@ -69,18 +69,15 @@ if (isset($_POST['email'])) {
         header("location: register.php");
         exit();
     } else {
-        // Generate a verification token
-     
 
 
         $name = 'Montessori Learning Center';
-        // sendemail_verify($email, $name, $verify_token);
-
-        // Insert the new user into the database
+    
         $sql_insert = "INSERT INTO user (email, pwd, verify_token) VALUES ('$email', '$pwd', '$verify_token')";
 
         
         if (mysqli_query($conn, $sql_insert)) {
+            
              sendemail_verify($email, $name, $verify_token);
 
             $msg = "<h4>Registration Successful! Please verify your Email Address.</h4>";
