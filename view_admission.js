@@ -241,9 +241,7 @@ document.addEventListener("DOMContentLoaded", () => {
         doc.text(schaddress, 65, 228);
         doc.text(yrcomp, 65, 236);
 
-        doc.text(date, 40, 268);
-        doc.text(`DATE`, 50, 276);
-        doc.text(`SIGNATURE OVER PRINTER NAME`, 100, 276);
+        doc.text(`Date submitted: ${date}`, 20, 276);
 
         doc.save("enrollment.pdf");
       })
@@ -257,3 +255,7 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchEnrollData();
   });
 });
+
+// doc.text(date, 40, 268);
+// doc.text(`DATE`, 50, 276);
+// doc.text(`SIGNATURE OVER PRINTER NAME`, 100, 276);

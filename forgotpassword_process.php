@@ -91,61 +91,6 @@ function send_password_reset($fetch_email, $token){
 
 
 
-    if(isset($_POST['newpwd'])){
-        $email = mysqli_escape_string($conn, $_POST['email']);
-        $new_password = mysqli_escape_string($conn, $_POST['newpwd']);
-        $confirm_password = mysqli_escape_string($conn, $_POST['confirmpwd']);
-        $token = mysqli_escape_string($conn, $_POST['password_token']);
-            var_dump($token);
-    
-        if(!empty($token)){
-            if(!empty($token) && !empty($new_password) && !empty($confirm_password)){
-    
-                    $check_token = "SELECT verify_token FROM user WHERE verify_token='$token' LIMIT 1";
-                    $check_token_run = mysqli_query($conn,$check_token);
-                    var_dump($token);
-                    var_dump($_GET['token']);
-                    if(mysqli_num_rows($check_token_run) > 0){
-                                    if($new_password == $confirm_password){
-                                            $update_password = "UPDATE user SET pwd='$new_password' WHERE verify_token='$token' LIMIT 1";
-                                            $update_password_run = mysqli_query($conn, $update_password);
-    
-                                            if($update_password_run){
-                                                $_SESSION['status'] = "New Password successfully updated!";
-                                                header("location home.php");
-                                                exit(0);
-                                            }else{
-                                                $_SESSION['status'] = "Update password error";
-                                                header("location: changepassword_page.php?token=$token&email=$email");
-                                                exit(0);
-                                            }
-                                    }else{
-                                        $_SESSION['status'] = "New password and confirm password does not match";
-                                        header("location: changepassword_page.php?token=$token&email=$email");
-                                        exit(0);
-                                    }
-                    }else {
-                        $_SESSION['status'] = "Invalid token";
-                        header("location: changepassword_page.php?token=$token&email=$email");
-                        exit(0);
-                    }
-    
-            }else{
-                    $_SESSION['status'] = "All fields are required to fill";
-                        header("location: changepassword_page.php?token=$token&email=$email");
-                        exit(0);
-    
-                        }
-        }else{
-            $_SESSION['status'] = "No token available";
-            header("location: changepassword_page.php");
-            exit(0);
-    
-        }
-        
-    }
-
-
 
 
 
