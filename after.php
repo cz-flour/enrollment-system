@@ -1,7 +1,16 @@
 
 <!DOCTYPE html lang=en>
 <html>
-    
+<?php
+session_start();
+
+if (isset($_SESSION['user_id'])) {
+    header("Location: home.php");
+    exit(); 
+
+}
+
+?>
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,7 +36,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link flex-center bold-text" aria-current="page" href="home.php">
+                    <a class="nav-link flex-center bold-text" aria-current="page" href="view_admission.php">
                         <i class="fa fa-fw fa-home"></i>
                         Home
                     </a>
@@ -36,9 +45,8 @@
                     <a class="nav-link bold-text" href="aboutus.php">About Us</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link cursor-pointer ml-auto bold-text"  id="loginbtn" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
-
-                    </li>
+            <a class="nav-link flex-center bold-text" id="logoutbtn" data-bs-toggle="modal" data-bs-target="#logoutModal"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
+            </li>  
             </ul>
         </div>
     </div>
