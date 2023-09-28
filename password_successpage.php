@@ -45,14 +45,14 @@
                         Home
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link bold-text" href="aboutus.php">About Us</a>
-                </li>
-                <li class="nav-item">
+                </li> -->
+                <!-- <li class="nav-item">
                     <a class="nav-link cursor-pointer bold-text" id="logoutbtn" data-bs-toggle="modal" data-bs-target="#logoutModal">
                         <i class="fa fa-sign-out" aria-hidden="true"></i>Logout
                     </a>
-                </li>
+                </li> -->
             </ul>
         </div>
     </div>

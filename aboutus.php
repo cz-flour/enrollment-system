@@ -4,7 +4,11 @@
     <?php
 session_start();
 
+
 ?>
+
+
+
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,12 +33,12 @@ session_start();
 
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
-            <li class="nav-item ">
-              <a class="nav-link flex-center bold-text" aria-current="page" href="view_admission.php">
-              <i class="fa fa-fw fa-home"></i>
-                Home
-              </a>
-            </li>
+          <li class="nav-item">
+    <a class="nav-link flex-center bold-text" aria-current="page" href="<?php echo isset($_SESSION['user_id']) ? 'view_admission.php' : 'home.php'; ?>">
+        <i class="fa fa-fw fa-home"></i>
+        Home
+    </a>
+</li>
             <li class="nav-item">
               <!-- <a class="nav-link" href="aboutus.php">About Us</a> -->
               <li class="nav-item">

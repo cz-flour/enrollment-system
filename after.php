@@ -1,7 +1,16 @@
 
 <!DOCTYPE html lang=en>
 <html>
-    
+<?php
+session_start();
+
+if (isset($_SESSION['user_id'])) {
+    header("Location: home.php");
+    exit(); 
+
+}
+
+?>
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,33 +29,28 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
-
-    <nav class="navbar navbar-expand-lg fixed-top">
-      <div class="container-fluid">
-        <img src="logo.png" alt="Logo"class="navbar-brand" height="auto" width="70">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid">
+        <img src="logo.png" alt="Logo" class="navbar-brand" height="70" width="70">
         <div class="nav-title">Our Lady of the Roses Montessori Learning Center</div>
-
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
-            <li class="nav-item ">
-              <a class="nav-link flex-center" aria-current="page" href="after.php">
-              <i class="fa fa-fw fa-home"></i>
-                Home
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="aboutus.php">About Us</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link cursor-pointer" id="logoutbtn" data-bs-toggle="modal" data-bs-target="#logoutModal"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
-            </li> 
-          </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link flex-center bold-text" aria-current="page" href="view_admission.php">
+                        <i class="fa fa-fw fa-home"></i>
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link bold-text" href="aboutus.php">About Us</a>
+                    </li>
+                    <li class="nav-item">
+            <a class="nav-link flex-center bold-text" id="logoutbtn" data-bs-toggle="modal" data-bs-target="#logoutModal"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
+            </li>  
+            </ul>
         </div>
-      </div>
-    </nav>
+    </div>
+</nav>
   </head>
 
   <style>
@@ -78,6 +82,12 @@
       background-color:mediumseagreen;
       color: wheat;
     }
+    .nav-title {
+        font-size: 1.5rem; /* Adjust the font size as needed */
+    }
+    .bold-text {
+    font-weight: bold;
+}
     
   </style>
           

@@ -28,18 +28,18 @@ session_start();
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link flex-center bold-text" aria-current="page" href="view_admission.php">
+                    <a class="nav-link flex-center bold-text" aria-current="page" href="home.php">
                         <i class="fa fa-fw fa-home"></i>
                         Home
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link bold-text" href="aboutus.php">About Us</a>
-                    </li>
-                    <li class="nav-item">
+                    </li> -->
+                    <!-- <li class="nav-item">
                     <a class="nav-link cursor-pointer ml-auto bold-text"  id="loginbtn" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
 
-                    </li>
+                    </li> -->
             </ul>
         </div>
     </div>
