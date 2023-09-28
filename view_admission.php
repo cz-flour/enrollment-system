@@ -192,8 +192,8 @@ body{
 
 
 
-    <body>
-        <div class="container">
+    <body class="pt-5">
+        <div class="container pb-3">
             <div class="content">
             <p id="dateAndTime"></p>
             
@@ -202,15 +202,22 @@ body{
             </div>
             <hr>
             <br>
-            <h2>Welcome, <?php echo $userName;?> &#10024;</h2>
-            <?php if ($enrollButtonVisible): ?>
-            <a href="home2.php" class="btn btn-primary">Enroll</a>
+            <div class="d-flex justify-content-between align-items-center" >
+                <h2>Welcome, <?php echo $userName;?> &#10024;</h2>
+                <div>
+    
+                    <?php if ($enrollButtonVisible): ?>
+                    <a href="home2.php" class="btn btn-primary">Enroll</a>
+          
+                <?php endif; ?>
+                <?php if(!$enrollButtonVisible): ?>
+                <button class="btn btn-success download-btn" id="download-btn">Download</button>
+                <?php endif; ?>
+                </div>
+
+            </div>
   
-        <?php endif; ?>
-        <a href="eformdownload.php" class="btn btn-success" download>Download</a>
-  
-            <br>
-            <br>
+
             <h5>S.Y. 2023-2024</h5>
             
             <table>
@@ -232,7 +239,7 @@ body{
                 echo '<td>' . $grlevel.'</td>';
                 echo '<td>' . $track.'</td>';
                 echo '<td>' . $strand.'</td>';
-                echo '<td id="assignedSection" class="text-danger">Pending</td>';
+                echo '<td id="assignedSection" class="text-danger"></td>';
                 echo '<td id="approvalStatus"></td>';
                 // var_dump($_SESSION);
     echo '</tr>';
@@ -286,24 +293,8 @@ $(document).ready(function () {
 });
 </script>
 
-<!-- <script>
-    // Assuming you have access to studentId on this page
-    var studentId = <?php 
-    
-    // echo $_SESSION['user_id']; 
-    ?>; // Assuming PHP is used to retrieve the student ID
-    
-    // Retrieve the approval state from local storage
-    var approvalState = localStorage.getItem("buttonApproved_" + studentId);
-    
-    // Display the approval status in the "Status" column
-    var approvalStatusElement = document.getElementById("approvalStatus"); // Replace "approvalStatus" with the actual ID of the element you want to update
-    if (approvalState === "true") {
-        approvalStatusElement.textContent = "Approved";
-    } else {
-        approvalStatusElement.textContent = "Not Approved";
-    }
-</script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
 <script src="./view_admission.js"></script>
 
 </html>
