@@ -65,12 +65,12 @@ if ($result && $row = mysqli_fetch_assoc($result)) {
         <div class="nav-title">Our Lady of the Roses Montessori Learning Center</div>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link flex-center bold-text" aria-current="page" href="view_admission.php">
                         <i class="fa fa-fw fa-home"></i>
                         Home
                     </a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a class="nav-link bold-text" href="aboutus.php">About Us</a>
                 </li>

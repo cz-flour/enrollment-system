@@ -26,6 +26,10 @@ if(isset($_POST['update_password'])){
                                         $update_password_run = mysqli_query($conn, $update_password);
 
                                         if($update_password_run){
+                                            $new_token = md5(rand());
+                                            $update_token = "UPDATE user SET verify_token='$new_token' WHERE verify_token='$token' LIMIT 1";
+                                            $update_token_run = mysqli_query($conn, $update_token);
+    
                                             $_SESSION['status'] = "<h2>New Password successfully updated!</h2>";
                                             header("location: password_successpage.php");
                                             exit(0);

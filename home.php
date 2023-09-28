@@ -8,10 +8,7 @@ if (isset($_SESSION['user_id'])) {
     exit(); 
 
 }
-// else{
-//     header("location: home.php");
 
-// }
 ?>
 <head>
     <meta charset="UTF-8">
@@ -92,7 +89,7 @@ if (isset($_SESSION['user_id'])) {
                     </a>
                 </li> -->
                 <li class="nav-item">
-                    <a class="nav-link bold-text" href="aboutus.php">About Us</a>
+                    <a class="nav-link bold-text" href="aboutus2.php">About Us</a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link cursor-pointer ml-auto bold-text"  id="loginbtn" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
